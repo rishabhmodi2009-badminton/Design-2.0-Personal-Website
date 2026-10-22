@@ -25,7 +25,7 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
   document.querySelectorAll('[data-count]').forEach(function (el) { counters.observe(el); });
 })();
 
-/* 3D EcoBean kit (three.js r128): a can wrapped in newspaper, coffee-ground soil, a sprout that regrows on click */
+/* 3D hero (three.js r128): the EcoBean kit in the middle, with a shuttlecock, an AI chip and a Project Wish heart orbiting it */
 (function () {
   var THREE = window.THREE, stage = document.querySelector('.stage[data-scene="kit"]');
   if (!THREE || !stage) return;
@@ -40,14 +40,14 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
   stage.classList.add('has-gl');
 
   var scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(36, 1, .1, 60);
-  cam.position.set(0, 1.1, 7.2); cam.lookAt(0, .45, 0);
+  cam.position.set(0, 1.6, 7.2); cam.lookAt(0, .2, 0);
   scene.add(new THREE.HemisphereLight(0xfff4e2, 0x8a6a4a, 1.05));
   var key = new THREE.DirectionalLight(0xffffff, .95); key.position.set(4, 7, 5); key.castShadow = true;
   key.shadow.mapSize.set(1024, 1024); key.shadow.camera.left = -4; key.shadow.camera.right = 4; key.shadow.camera.top = 4; key.shadow.camera.bottom = -4;
   scene.add(key);
   var rim = new THREE.DirectionalLight(0xffd9b0, .45); rim.position.set(-5, 3, -4); scene.add(rim);
   var ground = new THREE.Mesh(new THREE.CircleGeometry(3.4, 64), new THREE.ShadowMaterial({ opacity: .16 }));
-  ground.rotation.x = -Math.PI / 2; ground.position.y = -1.6; ground.receiveShadow = true; scene.add(ground);
+  ground.rotation.x = -Math.PI / 2; ground.position.y = -1.05; ground.receiveShadow = true; scene.add(ground);
 
   function newsTexture() {
     var c = document.createElement('canvas'); c.width = 1024; c.height = 256;
@@ -70,7 +70,8 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
     return g;
   }
 
-  var root = new THREE.Group(); scene.add(root);
+  var world = new THREE.Group(); scene.add(world);
+  var root = new THREE.Group(); world.add(root);
   var can = new THREE.Group(); root.add(can);
   var body = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, 1.9, 64, 1, true), std(0x9fb3b8, .28, .85));
   body.material.side = THREE.DoubleSide; body.castShadow = true; can.add(body);
@@ -107,10 +108,55 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
   });
   var beans = [];
   for (i = 0; i < 7; i++) { var b = bean(); b.userData = { a: i / 7 * Math.PI * 2, r: 1.75 + (i % 3) * .22, y: -.3 + (i % 4) * .45, s: .8 + (i % 3) * .2 }; root.add(b); beans.push(b); }
-  root.position.y = -.55;
+  root.scale.setScalar(.6); root.position.y = -.42;
 
-  var grow = 0, total = stem.geometry.index.count;
-  stage.addEventListener('click', function () { grow = 0; });
+  function label(txt, bg, fg) {
+    var c = document.createElement('canvas'); c.width = c.height = 256;
+    var x = c.getContext('2d');
+    x.fillStyle = bg; x.fillRect(0, 0, 256, 256);
+    x.strokeStyle = fg; x.globalAlpha = .35; x.lineWidth = 6; x.strokeRect(28, 28, 200, 200); x.globalAlpha = 1;
+    x.fillStyle = fg; x.font = 'bold 110px Menlo, Consolas, monospace'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(txt, 128, 136);
+    return new THREE.CanvasTexture(c);
+  }
+
+  /* badminton: cork, green band, feather skirt with quills */
+  var shuttle = new THREE.Group();
+  var cork = new THREE.Mesh(new THREE.SphereGeometry(.15, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), std(0xFFFDF8, .5));
+  cork.rotation.x = Math.PI; shuttle.add(cork);
+  var band = new THREE.Mesh(new THREE.CylinderGeometry(.155, .155, .06, 24), std(0x2E7D3E, .5)); band.position.y = .03; shuttle.add(band);
+  var skirt = new THREE.Mesh(new THREE.CylinderGeometry(.4, .15, .58, 16, 1, true), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .7, side: THREE.DoubleSide }));
+  skirt.position.y = .35; shuttle.add(skirt);
+  var quills = [];
+  for (i = 0; i < 16; i++) { var qa = i / 16 * Math.PI * 2; quills.push(new THREE.Vector3(Math.cos(qa) * .155, .06, Math.sin(qa) * .155), new THREE.Vector3(Math.cos(qa) * .405, .64, Math.sin(qa) * .405)); }
+  shuttle.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(quills), new THREE.LineBasicMaterial({ color: 0xb8aa98 })));
+  var rim2 = new THREE.Mesh(new THREE.TorusGeometry(.4, .012, 6, 32), std(0xd8ccbc, .6)); rim2.rotation.x = Math.PI / 2; rim2.position.y = .64; shuttle.add(rim2);
+
+  /* AI: a chip with pins and an "AI" die */
+  var chip = new THREE.Group(), side = std(0x174f5c, .4, .2);
+  var die = new THREE.Mesh(new THREE.BoxGeometry(.66, .12, .66), [side, side, new THREE.MeshStandardMaterial({ map: label('AI', '#1F6E80', '#FFF6E8'), roughness: .45 }), side, side, side]);
+  chip.add(die);
+  var pin = new THREE.BoxGeometry(.06, .03, .14), pinM = std(0xc5d3d6, .25, .9);
+  for (i = 0; i < 4; i++) for (var j = 0; j < 4; j++) {
+    var p = new THREE.Mesh(pin, pinM), off = (j - 1.5) * .15;
+    if (i < 2) p.position.set(off, -.02, (i ? 1 : -1) * .39); else { p.rotation.y = Math.PI / 2; p.position.set((i === 3 ? 1 : -1) * .39, -.02, off); }
+    chip.add(p);
+  }
+
+  /* Project Wish: a heart with a little wishing star */
+  var wish = new THREE.Group();
+  var hs = new THREE.Shape(); hs.moveTo(0, -.35); hs.bezierCurveTo(-.55, .05, -.3, .48, 0, .2); hs.bezierCurveTo(.3, .48, .55, .05, 0, -.35);
+  var heartGeo = new THREE.ExtrudeGeometry(hs, { depth: .14, bevelEnabled: true, bevelThickness: .05, bevelSize: .04, bevelSegments: 3 }); heartGeo.center();
+  var heart = new THREE.Mesh(heartGeo, std(0xB04A22, .45)); heart.scale.setScalar(1.15); wish.add(heart);
+  var ss = new THREE.Shape();
+  for (i = 0; i < 10; i++) { var sa = i / 10 * Math.PI * 2 - Math.PI / 2, sr = i % 2 ? .07 : .16; if (i) ss.lineTo(Math.cos(sa) * sr, Math.sin(sa) * sr); else ss.moveTo(Math.cos(sa) * sr, Math.sin(sa) * sr); }
+  var starGeo = new THREE.ExtrudeGeometry(ss, { depth: .05, bevelEnabled: true, bevelThickness: .02, bevelSize: .02, bevelSegments: 1 }); starGeo.center();
+  var star = new THREE.Mesh(starGeo, std(0xE2A93B, .4, .2)); star.position.set(.34, .32, .05); wish.add(star);
+
+  var orbit = [shuttle, chip, wish];
+  orbit.forEach(function (o, k) { o.userData = { a: k / 3 * Math.PI * 2 + .5, y: .15 + (k % 2) * .35 }; world.add(o); });
+
+  var grow = 0, spin = 1, total = stem.geometry.index.count;
+  stage.addEventListener('click', function () { grow = 0; spin = 6; });
 
   function size() { var w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
   size(); new ResizeObserver(size).observe(stage);
@@ -140,8 +186,17 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
       bn.position.set(Math.cos(u.a) * u.r, u.y + Math.sin(t * 1.4 + u.a * 2) * .14, Math.sin(u.a) * u.r);
       bn.rotation.set(t * .7 + u.a, t * .5, u.a); bn.scale.setScalar(u.s);
     });
-    root.rotation.y += (ptr.x * .55 + t * .12 - root.rotation.y) * .04;
-    root.rotation.x += (ptr.y * .12 - root.rotation.x) * .05;
+    spin += (1 - spin) * dt * 1.2;
+    orbit.forEach(function (o, k) {
+      var u = o.userData; u.a += dt * .38 * spin;
+      o.position.set(Math.cos(u.a) * 1.75, u.y + Math.sin(t * 1.3 + k * 2) * .14, Math.sin(u.a) * 1.4);
+    });
+    shuttle.rotation.set(.45 + Math.sin(t * .9) * .15, t * .8, .35);
+    chip.rotation.set(.95 + Math.sin(t * 1.1) * .12, t * .6, 0);
+    wish.rotation.set(Math.sin(t * .8) * .15, Math.sin(t * .7) * .7, Math.sin(t * 1.2) * .1);
+    root.rotation.y += (t * .12 - root.rotation.y) * .04;
+    world.rotation.y += (ptr.x * .45 - world.rotation.y) * .04;
+    world.rotation.x += (ptr.y * .12 - world.rotation.x) * .05;
     renderer.render(scene, cam);
     requestAnimationFrame(loop);
   }
