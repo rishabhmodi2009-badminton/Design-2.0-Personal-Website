@@ -4,128 +4,166 @@
 <meta charset="utf-8">
 <title>Rishabh Modi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Rishabh Modi — founder, student, and organizer in Singapore. EcoBean, Project Wish, Code For All, and cricket coaching.">
+<meta name="description" content="Rishabh Modi — student builder in Singapore. EcoBean, Project Wish, Code For All, and cricket coaching.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-inner">
-    <div class="brand">
-      <span class="brand-name">Rishabh Modi</span>
-      <span class="brand-location">Singapore</span>
-    </div>
-    <nav class="main-nav">
-      <a href="index.html" class="nav-link is-active">Index</a>
-      <a href="work.html" class="nav-link">Work</a>
-      <a href="resume.html" class="nav-link">Résumé</a>
-      <a href="mailto:rishabh.modi.2009@icloud.com" class="nav-email">Email</a>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Rishabh Modi, home"><svg class="sprout" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 29V15" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z" fill="currentColor"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z" fill="currentColor" opacity=".72"/></svg><span>Rishabh Modi</span></a>
+    <nav aria-label="Main">
+      <a href="index.html" class="on">Home</a>
+      <a href="work.html">Work</a>
+      <a href="resume.html">Résumé</a>
     </nav>
+    <a class="btn sm hello" href="mailto:rishabh.modi.2009@icloud.com">Say hello</a>
   </div>
 </header>
 
 <main>
 
-  <section class="hero reveal">
-    <div class="hero-eyebrow">Class of 2027 · Singapore American School</div>
-    <h1>Rishabh<br>Modi<span class="cursor">_</span></h1>
-    <p>I start things and see them through. A sustainability company built from recycled cans, a wish-granting club for terminally ill patients, a cricket coaching service for kids in my neighbourhood.</p>
-    <div class="hero-stats">
-      <div><div class="stat-label">Founded</div><div class="stat-value">4 ventures &amp; clubs</div></div>
-      <div><div class="stat-label">GPA</div><div class="stat-value">4.29 cumulative</div></div>
-      <div><div class="stat-label">AP scores of 5</div><div class="stat-value">7 exams</div></div>
-    </div>
-  </section>
-
-  <section class="section section-grid">
-    <div class="eyebrow">01 — About</div>
-    <div class="about-body">
-      <p>I'm a high school student in Singapore, graduating in 2027. Most of what I do sits somewhere between business and service.</p>
-      <p class="muted">EcoBean started as a question about what happens to the aluminium cans and coffee grounds we throw away. It became a company that turns them into plant-growing kits, and finished third nationally in Junior Achievement Singapore. Project Wish came from wanting to do something concrete for people with limited time left, and now runs alongside Ambulance Wish Singapore and Make-A-Wish.</p>
-      <p class="muted">Alongside that: economics and physics, coding education for underprivileged children through Code For All, and coaching cricket to younger players on weekends.</p>
-      <div class="about-links">
-        <a href="https://www.linkedin.com/in/rishabh-modi-2b0b06307/" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="mailto:rishabh.modi.2009@icloud.com">rishabh.modi.2009@icloud.com</a>
+  <section class="hero grain">
+    <div class="wrap">
+      <div>
+        <div class="tags rv"><span class="pill g">Class of 2027</span><span class="pill t">Singapore American School</span><span class="pill c">Future engineer</span></div>
+        <h1 aria-label="I turn everyday waste into things that grow."><span class="word" style="animation-delay:.05s">I</span> <span class="word" style="animation-delay:.12s">turn</span> <span class="word" style="animation-delay:.19s">everyday</span> <span class="word" style="animation-delay:.26s">waste</span> <span class="word" style="animation-delay:.33s">into</span> <span class="word" style="animation-delay:.4s">things</span> <span class="word" style="animation-delay:.47s">that</span> <span class="word grow" style="animation-delay:.6s">grow.<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 50 4, 120 4, 197 12"/></svg></span></h1>
+        <p class="lead rv d2">Hi, I'm Rishabh. I start things and see them through: a plant kit made from old cans and coffee grounds, a wish-granting club for terminally ill patients, a cricket coaching service for kids in my neighbourhood.</p>
+        <div class="cta rv d3">
+          <a class="btn" href="work.html">See what I've built <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn o" href="resume.html">My résumé</a>
+        </div>
+      </div>
+      <div class="orb rv d2">
+        <div class="ring"></div>
+        <div class="stage" data-scene="kit" aria-label="3D EcoBean kit: a tin can wrapped in newspaper, filled with coffee grounds, growing a sprout">
+          <div class="fallback"><svg class="sprout" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 29V15" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z" fill="currentColor"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z" fill="currentColor" opacity=".72"/></svg></div>
+        </div>
+        <span class="sticker s1">CEO of EcoBean</span>
+        <span class="sticker t s2">3rd in Singapore!</span>
+        <span class="sticker s s3">7 AP 5s</span>
+        <span class="hint">Tap to regrow ↻</span>
       </div>
     </div>
   </section>
 
-  <section class="section section-grid">
-    <div class="eyebrow">02 — Work</div>
-    <div>
-      <div class="work-list">
-        <a href="work.html" class="work-row">
-          <span><span class="work-row-title">EcoBean</span><span class="work-row-desc">Co-founder &amp; CEO — plant-growing kits from recycled cans, newspaper, and coffee-ground fertilizer</span></span>
-          <span class="work-row-date">2025 →</span>
-        </a>
-        <a href="work.html" class="work-row">
-          <span><span class="work-row-title">Project Wish</span><span class="work-row-desc">Co-founder &amp; president — youth initiative with Ambulance Wish Singapore and Make-A-Wish</span></span>
-          <span class="work-row-date">2025 →</span>
-        </a>
-        <a href="work.html" class="work-row">
-          <span><span class="work-row-title">Code For All</span><span class="work-row-desc">Co-president — coding education for underprivileged children</span></span>
-          <span class="work-row-date">2023 →</span>
-        </a>
-        <a href="work.html" class="work-row">
-          <span><span class="work-row-title">Cricket Coaching Service</span><span class="work-row-desc">Founder — structured curriculum for youth athletes preparing for club-level play</span></span>
-          <span class="work-row-date">2023 →</span>
-        </a>
-      </div>
-      <a href="work.html" class="all-projects-btn">All projects in detail</a>
-    </div>
-  </section>
-
-  <section class="section section-grid">
-    <div class="eyebrow">03 — Services</div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-tag">Coaching</div>
-        <div class="service-title">Youth cricket</div>
-        <p class="service-desc">Structured sessions for younger players, from fundamentals to club-level preparation. Running since 2023.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-tag">Workshops</div>
-        <div class="service-title">Intro coding &amp; digital literacy</div>
-        <p class="service-desc">Sessions and presentations developed for Code For All and the Jalan Besar Project service conference.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-tag">Operations</div>
-        <div class="service-title">Workflow automation</div>
-        <p class="service-desc">Built seven Power Automate workflows and WhatsApp Business quick replies for Ambulance Wish Singapore.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-tag">Campaigns</div>
-        <div class="service-title">Fundraiser &amp; social media</div>
-        <p class="service-desc">Planning, scripting, and promotional content — including the AMBY Blind Box launch campaign.</p>
+  <section class="strip dash-top dash-bot">
+    <div class="wrap">
+      <div class="eq rv">
+        <div class="it"><span class="ic" style="background:var(--sky);color:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><ellipse cx="12" cy="5" rx="6" ry="2.2"/><path d="M6 5v14c0 1.2 2.7 2.2 6 2.2s6-1 6-2.2V5"/><path d="M6 10c0 1.2 2.7 2.2 6 2.2s6-1 6-2.2"/></svg></span>Old cans</div>
+        <span class="op">+</span>
+        <div class="it"><span class="ic" style="background:#E8D7C2;color:var(--coffee)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9h12v5a6 6 0 0 1-12 0V9z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3"/></svg></span>Coffee grounds</div>
+        <span class="op">+</span>
+        <div class="it"><span class="ic" style="background:#EFE5D2;color:var(--ink)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h6M7 12h10M7 16h10M15 8h2"/></svg></span>Newspaper</div>
+        <span class="op">=</span>
+        <div class="it res"><span class="ic"><svg class="sprout" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 29V15" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z" fill="currentColor"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z" fill="currentColor" opacity=".72"/></svg></span>A growing plant</div>
       </div>
     </div>
   </section>
 
-  <section class="section section-grid" style="padding-bottom:140px; border-bottom:0;">
-    <div class="eyebrow">04 — Contact</div>
-    <div>
-      <h2 class="contact-heading">Say hello.</h2>
-      <p class="contact-intro">Happy to talk about sustainability, service projects, or cricket. Email is fastest.</p>
-      <div class="contact-list">
-        <a href="mailto:rishabh.modi.2009@icloud.com" class="contact-row"><span class="contact-row-label">Email</span><span class="contact-row-value">rishabh.modi.2009@icloud.com</span></a>
-        <a href="https://www.linkedin.com/in/rishabh-modi-2b0b06307/" target="_blank" rel="noopener" class="contact-row"><span class="contact-row-label">LinkedIn</span><span class="contact-row-value">in/rishabh-modi-2b0b06307 ↗</span></a>
-        <div class="contact-row"><span class="contact-row-label">Based in</span><span class="contact-row-value">Singapore</span></div>
+  <section class="sec results">
+    <div class="wrap">
+      <div class="grid">
+        <div class="res-card c-green rv"><i></i><b>3<sup>rd</sup></b><p>in Singapore at the Junior Achievement national competition</p></div>
+        <div class="res-card c-terra rv d1"><i></i><b>5<sup>th</sup></b><p>in the world at the Global Financial Literacy Olympiad (2024)</p></div>
+        <div class="res-card c-teal rv d2"><i></i><b data-count="30">30</b><p>teammates led as CEO of EcoBean</p></div>
+        <div class="res-card c-coffee rv d3"><i></i><b data-count="7">7</b><p>automations built for Ambulance Wish Singapore</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec work" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="kick rv">Projects</span><h2 class="h2 rv d1">Things I've started</h2></div>
+        <p class="lead rv d2" style="max-width:40ch">Small ideas that kept growing. <a href="work.html" style="color:var(--green);font-weight:800">See all projects →</a></p>
+      </div>
+      <div class="grid">
+        <article class="pcard rv">
+          <div class="ph" style="background:var(--sage);color:var(--green)"><span class="pill g">Co-founder &amp; CEO · 2025–</span><svg class="sprout" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 29V15" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z" fill="currentColor"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z" fill="currentColor" opacity=".72"/></svg></div>
+          <div class="bd">
+            <h3>EcoBean</h3>
+            <p>A beginner-friendly plant kit made from recycled cans and newspaper, with natural fertilizer from used coffee grounds.</p>
+            <div class="stat" style="color:var(--green)">27 kits sold · $540 · 3rd in Singapore</div>
+            <a class="btn sm" href="work.html#ecobean">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="pcard rv d1">
+          <div class="ph" style="background:var(--peach);color:var(--terra)"><span class="pill t">Co-founder &amp; president · 2025–</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.3A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.6c0 5.7-7.5 10.3-7.5 10.3z"/></svg></div>
+          <div class="bd">
+            <h3>Project Wish</h3>
+            <p>A service club working with Make-A-Wish and Ambulance Wish Singapore. One of 3 new clubs approved from 50+ applications.</p>
+            <div class="stat" style="color:var(--terra)">New Service Club Award, 2026</div>
+            <a class="btn sm t" href="work.html#wish">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="pcard rv d2">
+          <div class="ph" style="background:var(--sky);color:var(--teal)"><span class="pill c">Intern · Jun–Jul 2026</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/></svg></div>
+          <div class="bd">
+            <h3>Ambulance Wish Singapore</h3>
+            <p>The team tracked wishes and volunteers by hand. I built Power Automate workflows and WhatsApp quick replies so nothing gets missed.</p>
+            <div class="stat" style="color:var(--teal)">7 workflows built and debugged</div>
+            <a class="btn sm c" href="resume.html#experience">See the details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="kick rv">Also</span><h2 class="h2 rv d1">Where I help out</h2></div>
+      </div>
+      <div class="lead-grid">
+        <a class="lcard rv" href="work.html#code" style="--c:var(--teal)"><h3>Code For All</h3><span class="role">Co-president · 2023–</span><p>Coding education for underprivileged children, plus a digital literacy talk for the Jalan Besar Project.</p></a>
+        <a class="lcard rv d1" href="work.html#cricket" style="--c:var(--green)"><h3>Cricket coaching</h3><span class="role">Founder · 2023–</span><p>A structured curriculum taking younger players from fundamentals to club-level play.</p></a>
+        <a class="lcard rv d2" href="resume.html#service" style="--c:var(--terra)"><h3>Science Centre Singapore</h3><span class="role">Volunteer · 2025–</span><p>Sharing sustainability initiatives at community events like Yue Hua Green Day.</p></a>
+        <a class="lcard rv d3" href="work.html#delivery" style="--c:var(--sun)"><h3>Delivery service</h3><span class="role">Founder · 2022</span><p>My first venture: grocery runs for busy parents in my condo. $300+ in revenue.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="band rv">
+        <svg class="leaf" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z"/></svg>
+        <div><h2>Let's grow something together.</h2><p>Happy to talk about sustainability, service projects, or cricket. Email is fastest.</p></div>
+        <div class="links">
+          <a class="btn w" href="mailto:rishabh.modi.2009@icloud.com">Email me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="ghost" href="https://www.linkedin.com/in/rishabh-modi-2b0b06307/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <span>Rishabh Modi — Singapore</span>
-    <span data-year>2026</span>
+<footer class="foot">
+  <span class="mark">grow.</span>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="logo" href="index.html"><svg class="sprout" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 29V15" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z" fill="currentColor"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z" fill="currentColor" opacity=".72"/></svg>Rishabh Modi</a>
+        <p>Student builder in Singapore, turning everyday waste and everyday problems into things that grow.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul><li><a href="work.html">Work</a></li><li><a href="resume.html">Résumé</a></li></ul>
+      </div>
+      <div>
+        <h4>Say hello</h4>
+        <ul><li><a href="mailto:rishabh.modi.2009@icloud.com">Email</a></li><li><a href="https://www.linkedin.com/in/rishabh-modi-2b0b06307/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+      </div>
+    </div>
+    <div class="bot"><span>© <span data-year>2026</span> Rishabh Modi · Singapore</span><a href="#">Back to top ↑</a></div>
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

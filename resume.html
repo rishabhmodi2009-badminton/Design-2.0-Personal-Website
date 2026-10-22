@@ -7,178 +7,185 @@
 <meta name="description" content="Rishabh Modi's résumé — education, honors, experience, programs, service, and skills.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-inner">
-    <div class="brand">
-      <span class="brand-name">Rishabh Modi</span>
-      <span class="brand-location">Singapore</span>
-    </div>
-    <nav class="main-nav">
-      <a href="index.html" class="nav-link">Index</a>
-      <a href="work.html" class="nav-link">Work</a>
-      <a href="resume.html" class="nav-link is-active">Résumé</a>
-      <a href="mailto:rishabh.modi.2009@icloud.com" class="nav-email">Email</a>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Rishabh Modi, home"><svg class="sprout" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 29V15" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z" fill="currentColor"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z" fill="currentColor" opacity=".72"/></svg><span>Rishabh Modi</span></a>
+    <nav aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="resume.html" class="on">Résumé</a>
     </nav>
+    <a class="btn sm hello" href="mailto:rishabh.modi.2009@icloud.com">Say hello</a>
   </div>
 </header>
 
 <main>
 
-  <section class="page-hero resume-hero reveal">
-    <div class="eyebrow">Résumé</div>
-    <h1>Rishabh Modi</h1>
-    <div class="resume-meta">Singapore · rishabh.modi.2009@icloud.com</div>
-  </section>
-
-  <section class="resume-section section-grid">
-    <div class="eyebrow">Education</div>
-    <div class="resume-body">
-      <div class="resume-row-head">
-        <div class="resume-title">Singapore American School</div>
-        <div class="resume-date">Expected May 2027</div>
-      </div>
-      <div class="resume-subtitle">High School Diploma · Cumulative GPA 4.29</div>
-      <div class="resume-note">AP scores of 5: Macroeconomics, Microeconomics, Physics 1, Chemistry, Calculus BC, Physics C Mechanics, Physics C Electricity &amp; Magnetism.</div>
-    </div>
-  </section>
-
-  <section class="resume-section section-grid">
-    <div class="eyebrow">Honors &amp; awards</div>
-    <div class="resume-body awards-list">
+  <section class="phero grain" style="--c:var(--terra)">
+    <div class="wrap" style="grid-template-columns:1fr">
       <div>
-        <div class="award-year">2026</div>
-        <div class="award-title">New Service Club Award — SAS Eagle Service Council</div>
-        <div class="award-desc">For leadership of Project Wish: led all club meetings, planned the first-ever social media fundraiser, directed service projects with Ambulance Wish Singapore and Make-A-Wish Singapore.</div>
-      </div>
-      <div>
-        <div class="award-year">2025–2026</div>
-        <div class="award-title">3rd Place, CEO — Junior Achievement Singapore</div>
-        <div class="award-desc">Led EcoBean to a national 3rd place finish; evaluated on financial performance, investor interview, trade fair execution, and final report.</div>
-      </div>
-      <div>
-        <div class="award-year">2025</div>
-        <div class="award-title">Best Project / "Best Game" Award — Inspirit AI</div>
-        <div class="award-desc">Recognized for strongest technical execution and presentation.</div>
-      </div>
-      <div>
-        <div class="award-year">2024</div>
-        <div class="award-title">5th Place — Global Financial Literacy Olympiad</div>
-        <div class="award-desc">Placed 5th globally in an international competition featuring analytical and case-based evaluation.</div>
-      </div>
-      <div class="honors-extra">
-        <div>National Honor Society <span>2025–</span></div>
-        <div>Scholars List, SAS <span>2023–2026</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="resume-section section-grid">
-    <div class="eyebrow">Experience</div>
-    <div class="resume-body experience-list">
-      <div class="exp-item">
-        <div class="exp-item-head">
-          <div class="exp-item-title">Ambulance Wish Singapore — Intern</div>
-          <div class="exp-item-date">Jun–Jul 2026</div>
+        <span class="kick rv">Résumé</span>
+        <h1 aria-label="The whole story, on one page."><span class="word" style="animation-delay:.05s">The</span> <span class="word" style="animation-delay:.12s">whole</span> <span class="word" style="animation-delay:.19s">story,</span> <em class="word" style="animation-delay:.3s">on one page.</em></h1>
+        <p class="lead rv d2">Singapore · <a href="mailto:rishabh.modi.2009@icloud.com" style="color:var(--ink);font-weight:800">rishabh.modi.2009@icloud.com</a></p>
+        <div class="cta rv d3" style="margin-top:24px">
+          <a class="btn t" href="https://5659ffe5-e696-46b2-8c1c-6af92f4fa96f.usrfiles.com/ugd/d35ed7_8d392a13908f424d8f441f273ca69520.pdf" target="_blank" rel="noopener">Download PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn o" href="https://www.linkedin.com/in/rishabh-modi-2b0b06307/" target="_blank" rel="noopener">LinkedIn ↗</a>
         </div>
-        <ul>
-          <li>Automated wish-completion tracking and volunteer coordination by building and debugging 7 Power Automate workflows; created and integrated WhatsApp Business quick replies.</li>
-          <li>Planned and created the social media campaign for AMBY Blind Box, including unboxing video script and promotional content.</li>
-          <li>Supported fundraising by identifying potential new donors; compiled information and created labels for the Cakes For A Cause event.</li>
-        </ul>
       </div>
-      <div class="exp-item">
-        <div class="exp-item-head">
-          <div class="exp-item-title">Green Tiger Mobility — Job shadow</div>
-          <div class="exp-item-date">Jul 2023</div>
+    </div>
+  </section>
+
+  <section class="sec dash-top">
+    <div class="wrap">
+
+      <div class="r-sec" id="education">
+        <span class="kick rv" style="color:var(--green)">Education</span>
+        <div class="edu rv d1">
+          <div class="edu-head"><h3>Singapore American School</h3><span class="when">Expected May 2027</span></div>
+          <div class="gpa">High School Diploma · Cumulative GPA 4.29</div>
+          <div style="font-weight:800;font-size:14px;color:var(--mut)">AP scores of 5</div>
+          <div class="aps">
+            <span class="pill">Macroeconomics</span><span class="pill">Microeconomics</span><span class="pill">Physics 1</span><span class="pill">Chemistry</span><span class="pill">Calculus BC</span><span class="pill">Physics C: Mechanics</span><span class="pill">Physics C: E&amp;M</span>
+          </div>
         </div>
-        <ul>
-          <li>Observed the petrol-to-electric scooter conversion process in Bangalore, India.</li>
-          <li>Shadowed CEO Ashis Dokania to learn about his journey.</li>
-        </ul>
       </div>
-    </div>
-  </section>
 
-  <section class="resume-section section-grid">
-    <div class="eyebrow">Programs</div>
-    <div class="resume-body programs-list">
-      <div>
-        <div class="program-title">Introduction to AI — Inspirit AI <span class="program-year">2025</span></div>
-        <ul>
-          <li>Led by graduates from Stanford, MIT, and other leading institutions.</li>
-          <li>Neural networks, APIs, facial recognition systems, and the ethics of AI.</li>
-          <li>Built an object detection program applying neural networks and API integration.</li>
-        </ul>
+      <div class="r-sec" id="awards">
+        <span class="kick rv">Honors &amp; awards</span>
+        <div>
+          <div class="aw-grid">
+            <div class="aw rv"><span class="yr">2026</span><div class="md" style="background:var(--terra)">★</div><h3>New Service Club Award</h3><span class="org" style="color:var(--terra)">SAS Eagle Service Council</span><p>For leading Project Wish: every club meeting, the first-ever social media fundraiser, and service projects with Ambulance Wish and Make-A-Wish Singapore.</p></div>
+            <div class="aw rv d1"><span class="yr">2025–26</span><div class="md" style="background:var(--green)">3rd</div><h3>3rd Place, CEO</h3><span class="org" style="color:var(--green)">Junior Achievement Singapore</span><p>Led EcoBean to a national 3rd place on financials, investor interview, trade fair, and final report.</p></div>
+            <div class="aw rv"><span class="yr">2025</span><div class="md" style="background:var(--teal)">AI</div><h3>Best Project / "Best Game"</h3><span class="org" style="color:var(--teal)">Inspirit AI</span><p>Recognized for the strongest technical execution and presentation.</p></div>
+            <div class="aw rv d1"><span class="yr">2024</span><div class="md" style="background:var(--coffee)">5th</div><h3>5th Place, globally</h3><span class="org" style="color:var(--coffee2)">Global Financial Literacy Olympiad</span><p>International competition with analytical and case-based evaluation.</p></div>
+          </div>
+          <div class="honors rv">
+            <span class="award">National Honor Society · 2025–</span>
+            <span class="award">Scholars List, SAS · 2023–2026</span>
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="program-title">NextGen Program — IIT Bombay <span class="program-year">2025</span></div>
-        <ul>
-          <li>Taught by current IIT Bombay professors.</li>
-          <li>Hands-on laser-cutting, 3D printing, and CAD software.</li>
-          <li>Emphasis on global warming and engineering for sustainable living.</li>
-        </ul>
-      </div>
-      <div>
-        <div class="program-title">Young Leaders Summer Program — Singapore Management University <span class="program-year">2025</span></div>
-        <ul>
-          <li>Developed leadership and project management skills.</li>
-          <li>Applied structured team frameworks to improve communication and execution.</li>
-        </ul>
-      </div>
-      <div>
-        <div class="program-title">BrightChamps Financial Literacy Training <span class="program-year">HBS &amp; IIT Bombay curriculum</span></div>
-        <ul>
-          <li>Personal finance, economics, and real-world financial investment.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
-  <section class="resume-section section-grid">
-    <div class="eyebrow">Service</div>
-    <div class="resume-body service-list">
-      <div>
-        <div class="program-title">Code For All — Co-president <span class="program-year">2023–</span></div>
-        <ul>
-          <li>International service project empowering underprivileged children through coding education.</li>
-          <li>Planned and led multiple fundraising and outreach events.</li>
-        </ul>
+      <div class="r-sec" id="experience">
+        <span class="kick rv" style="color:var(--teal)">Experience</span>
+        <div class="timeline rv d1">
+          <div class="tl" style="--c:var(--teal)">
+            <small>Jun–Jul 2026</small>
+            <b>Ambulance Wish Singapore — Intern</b>
+            <ul>
+              <li>Automated wish-completion tracking and volunteer coordination by building and debugging 7 Power Automate workflows; created and integrated WhatsApp Business quick replies.</li>
+              <li>Planned and created the social media campaign for AMBY Blind Box, including unboxing video script and promotional content.</li>
+              <li>Supported fundraising by identifying potential new donors; compiled information and created labels for the Cakes For A Cause event.</li>
+            </ul>
+          </div>
+          <div class="tl" style="--c:var(--green)">
+            <small>Jul 2023</small>
+            <b>Green Tiger Mobility — Job shadow</b>
+            <ul>
+              <li>Observed the petrol-to-electric scooter conversion process in Bangalore, India.</li>
+              <li>Shadowed CEO Ashis Dokania to learn about his journey.</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="program-title">Science Centre Singapore — Volunteer <span class="program-year">2025–</span></div>
-        <ul>
-          <li>Volunteered at community events such as Yue Hua Green Day, sharing Science Centre sustainability initiatives.</li>
-          <li>Proposed a new activity for weekly Observatory sessions to be implemented in the future.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
-  <section class="resume-section section-grid" style="padding-bottom:120px; border-bottom:0;">
-    <div class="eyebrow">Skills</div>
-    <div class="skills-grid">
-      <div>
-        <div class="skills-label">Technical</div>
-        <div class="skills-values"><div>AI fundamentals</div><div>Project management</div><div>Public speaking</div><div>Leadership</div></div>
+      <div class="r-sec" id="programs">
+        <span class="kick rv" style="color:var(--green)">Programs</span>
+        <div class="timeline rv d1">
+          <div class="tl" style="--c:var(--teal)">
+            <small>2025</small>
+            <b>Introduction to AI — Inspirit AI</b>
+            <ul>
+              <li>Led by graduates from Stanford, MIT, and other leading institutions.</li>
+              <li>Neural networks, APIs, facial recognition systems, and the ethics of AI.</li>
+              <li>Built an object detection program applying neural networks and API integration.</li>
+            </ul>
+          </div>
+          <div class="tl" style="--c:var(--terra)">
+            <small>2025</small>
+            <b>NextGen Program — IIT Bombay</b>
+            <ul>
+              <li>Taught by current IIT Bombay professors.</li>
+              <li>Hands-on laser-cutting, 3D printing, and CAD software.</li>
+              <li>Emphasis on global warming and engineering for sustainable living.</li>
+            </ul>
+          </div>
+          <div class="tl" style="--c:var(--green)">
+            <small>2025</small>
+            <b>Young Leaders Summer Program — Singapore Management University</b>
+            <ul>
+              <li>Developed leadership and project management skills.</li>
+              <li>Applied structured team frameworks to improve communication and execution.</li>
+            </ul>
+          </div>
+          <div class="tl" style="--c:var(--sun)">
+            <small>HBS &amp; IIT Bombay curriculum</small>
+            <b>BrightChamps Financial Literacy Training</b>
+            <ul>
+              <li>Personal finance, economics, and real-world financial investment.</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="skills-label">Languages</div>
-        <div class="skills-values"><div>English — native / bilingual</div><div>Mandarin — limited working</div><div>Hindi — elementary</div></div>
+
+      <div class="r-sec" id="service">
+        <span class="kick rv">Service</span>
+        <div class="timeline rv d1">
+          <div class="tl" style="--c:var(--teal)">
+            <small>2023–</small>
+            <b>Code For All — Co-president</b>
+            <ul>
+              <li>International service project empowering underprivileged children through coding education.</li>
+              <li>Planned and led multiple fundraising and outreach events.</li>
+            </ul>
+          </div>
+          <div class="tl" style="--c:var(--terra)">
+            <small>2025–</small>
+            <b>Science Centre Singapore — Volunteer</b>
+            <ul>
+              <li>Volunteered at community events such as Yue Hua Green Day, sharing Science Centre sustainability initiatives.</li>
+              <li>Proposed a new activity for weekly Observatory sessions to be implemented in the future.</li>
+            </ul>
+          </div>
+        </div>
       </div>
+
+      <div class="r-sec" id="skills">
+        <span class="kick rv" style="color:var(--teal)">Skills</span>
+        <div class="skills rv d1">
+          <div style="--c:var(--green)"><h4>Technical &amp; leadership</h4><div class="pills"><span class="pill g">AI fundamentals</span><span class="pill g">Project management</span><span class="pill g">Public speaking</span><span class="pill g">Leadership</span></div></div>
+          <div style="--c:var(--teal)"><h4>Languages</h4><div class="pills"><span class="pill c">English · native</span><span class="pill c">Mandarin · limited working</span><span class="pill c">Hindi · elementary</span></div></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <span>Rishabh Modi — Singapore</span>
-    <span data-year>2026</span>
+<footer class="foot">
+  <span class="mark">grow.</span>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="logo" href="index.html"><svg class="sprout" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 29V15" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z" fill="currentColor"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z" fill="currentColor" opacity=".72"/></svg>Rishabh Modi</a>
+        <p>Student builder in Singapore, turning everyday waste and everyday problems into things that grow.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul><li><a href="work.html">Work</a></li><li><a href="resume.html">Résumé</a></li></ul>
+      </div>
+      <div>
+        <h4>Say hello</h4>
+        <ul><li><a href="mailto:rishabh.modi.2009@icloud.com">Email</a></li><li><a href="https://www.linkedin.com/in/rishabh-modi-2b0b06307/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+      </div>
+    </div>
+    <div class="bot"><span>© <span data-year>2026</span> Rishabh Modi · Singapore</span><a href="#">Back to top ↑</a></div>
   </div>
 </footer>
 
