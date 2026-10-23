@@ -215,3 +215,115 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
   loop();
 })();
 
+
+/* 3D research hero: a flask of coffee-ground "tea" fertilizer with rising bubbles and a seedling, circled by ammonium and phosphate; tap to fizz */
+(function () {
+  var THREE = window.THREE, stage = document.querySelector('.stage[data-scene="flask"]');
+  if (!THREE || !stage) return;
+  function std(color, rough, metal) { return new THREE.MeshStandardMaterial({ color: color, roughness: rough == null ? .6 : rough, metalness: metal || 0 }); }
+
+  var renderer;
+  try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+  renderer.domElement.className = 'gl';
+  stage.appendChild(renderer.domElement);
+  stage.classList.add('has-gl');
+
+  var scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(34, 1, .1, 60);
+  cam.position.set(0, 1.5, 7); cam.lookAt(0, 1.05, 0);
+  scene.add(new THREE.HemisphereLight(0xfff4e2, 0x8a6a4a, 1.05));
+  var key = new THREE.DirectionalLight(0xffffff, .9); key.position.set(4, 7, 5); scene.add(key);
+  var rim = new THREE.DirectionalLight(0xffd9b0, .5); rim.position.set(-5, 3, -4); scene.add(rim);
+
+  var world = new THREE.Group(); scene.add(world);
+  var root = new THREE.Group(); world.add(root);
+
+  /* glass Erlenmeyer flask and the coffee liquid inside it */
+  function wall(y) { return y < .2 ? .98 : y > 1.25 ? .3 : .98 - (y - .2) / 1.05 * .68; }
+  var glassPts = [[0, 0], [.86, 0], [.96, .07], [.98, .2], [.3, 1.25], [.3, 1.9], [.37, 1.95], [.37, 2]].map(function (p) { return new THREE.Vector2(p[0], p[1]); });
+  var glass = new THREE.Mesh(new THREE.LatheGeometry(glassPts, 48), new THREE.MeshStandardMaterial({ color: 0xe8f4f0, roughness: .08, metalness: .1, transparent: true, opacity: .28, side: THREE.DoubleSide, depthWrite: false }));
+  var LEVEL = .8;
+  var liquidPts = [[0, .04], [.82, .04], [.91, .1], [.93, .2], [wall(LEVEL) - .05, LEVEL]].map(function (p) { return new THREE.Vector2(p[0], p[1]); });
+  var liquid = new THREE.Mesh(new THREE.LatheGeometry(liquidPts, 48), new THREE.MeshStandardMaterial({ color: 0x6b3f22, roughness: .25, transparent: true, opacity: .9 }));
+  var surface = new THREE.Mesh(new THREE.CircleGeometry(wall(LEVEL) - .05, 48), new THREE.MeshStandardMaterial({ color: 0x8a5631, roughness: .2 }));
+  surface.rotation.x = -Math.PI / 2; surface.position.y = LEVEL;
+  root.add(liquid, surface, glass);
+  var lip = new THREE.Mesh(new THREE.TorusGeometry(.36, .03, 10, 40), new THREE.MeshStandardMaterial({ color: 0xe8f4f0, transparent: true, opacity: .55, roughness: .1 }));
+  lip.rotation.x = Math.PI / 2; lip.position.y = 2; root.add(lip);
+  var label = new THREE.Mesh(new THREE.CylinderGeometry(.62, .78, .32, 40, 1, true), std(0xFFFDF8, .7));
+  label.material.side = THREE.DoubleSide; label.position.y = .58; root.add(label);
+
+  /* seedling growing out of the neck */
+  var stemCurve = new THREE.CatmullRomCurve3([new THREE.Vector3(0, 1.3, 0), new THREE.Vector3(.04, 1.9, .02), new THREE.Vector3(-.05, 2.35, 0), new THREE.Vector3(.02, 2.7, 0)]);
+  var stem = new THREE.Mesh(new THREE.TubeGeometry(stemCurve, 40, .035, 8, false), std(0x4FA35C, .55)); root.add(stem);
+  var leafShape = new THREE.Shape();
+  leafShape.moveTo(0, 0); leafShape.bezierCurveTo(.22, .12, .3, .45, 0, .78); leafShape.bezierCurveTo(-.3, .45, -.22, .12, 0, 0);
+  var leafGeo = new THREE.ShapeGeometry(leafShape, 20), leaves = [];
+  [[.8, 0, .75, 0x58B061], [.97, Math.PI, .9, 0x4FA35C], [.62, 1.7, .55, 0x58B061]].forEach(function (L) {
+    var pivot = new THREE.Group(); pivot.position.copy(stemCurve.getPoint(L[0])); pivot.rotation.y = L[1];
+    var leaf = new THREE.Mesh(leafGeo, new THREE.MeshStandardMaterial({ color: L[3], roughness: .5, side: THREE.DoubleSide }));
+    leaf.rotation.z = -1.05; leaf.scale.setScalar(L[2]); pivot.add(leaf); root.add(pivot); leaves.push(pivot);
+  });
+
+  /* bubbles rising through the liquid */
+  var bubbleM = new THREE.MeshStandardMaterial({ color: 0xf3d9b8, roughness: .15, transparent: true, opacity: .75 }), bubbles = [];
+  for (var i = 0; i < 26; i++) {
+    var b = new THREE.Mesh(new THREE.SphereGeometry(.035 + Math.random() * .03, 10, 8), bubbleM);
+    b.userData = { a: Math.random() * Math.PI * 2, r: Math.random(), y: Math.random() * LEVEL, sp: .25 + Math.random() * .35 };
+    root.add(b); bubbles.push(b);
+  }
+
+  /* nutrient molecules: ammonium (NH4+) and phosphate (PO4) in ball-and-stick form */
+  var tet = [[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]].map(function (v) { return new THREE.Vector3(v[0], v[1], v[2]).normalize(); });
+  var bondM = std(0xd9cfc2, .5);
+  function molecule(center, cR, outer, oR, len) {
+    var g = new THREE.Group();
+    g.add(new THREE.Mesh(new THREE.SphereGeometry(cR, 24, 18), std(center, .35)));
+    tet.forEach(function (d) {
+      var atom = new THREE.Mesh(new THREE.SphereGeometry(oR, 18, 14), std(outer, .4)); atom.position.copy(d).multiplyScalar(len); g.add(atom);
+      var bond = new THREE.Mesh(new THREE.CylinderGeometry(.025, .025, len, 8), bondM);
+      bond.position.copy(d).multiplyScalar(len / 2); bond.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), d); g.add(bond);
+    });
+    return g;
+  }
+  var mols = [molecule(0x1F6E80, .15, 0xFFFDF8, .09, .32), molecule(0xE2A93B, .16, 0xB04A22, .11, .36), molecule(0x1F6E80, .15, 0xFFFDF8, .09, .32)];
+  mols.forEach(function (m, k) { m.userData = { a: k / 3 * Math.PI * 2, y: .5 + k * .55 }; m.scale.setScalar(k === 1 ? 1 : .85); world.add(m); });
+
+  var fizz = 1;
+  stage.addEventListener('click', function () { fizz = 4; });
+
+  function size() { var w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
+  size(); new ResizeObserver(size).observe(stage);
+
+  var ptr = { x: 0, y: 0 }, tgt = { x: 0, y: 0 };
+  stage.addEventListener('pointermove', function (ev) { var r = stage.getBoundingClientRect(); tgt.x = (ev.clientX - r.left) / r.width * 2 - 1; tgt.y = (ev.clientY - r.top) / r.height * 2 - 1; });
+  stage.addEventListener('pointerleave', function () { tgt.x = 0; tgt.y = 0; });
+
+  var visible = true, running = false, t = 0, last = performance.now();
+  new IntersectionObserver(function (l) { visible = l[0].isIntersecting; if (visible && !running) { last = performance.now(); loop(); } }).observe(stage);
+  function loop() {
+    if (!visible) { running = false; return; }
+    running = true;
+    var now = performance.now(), dt = Math.min(.05, (now - last) / 1000); last = now; t += dt;
+    ptr.x += (tgt.x - ptr.x) * .06; ptr.y += (tgt.y - ptr.y) * .06;
+    fizz += (1 - fizz) * dt * .8;
+    bubbles.forEach(function (b) {
+      var u = b.userData; u.y += dt * u.sp * fizz;
+      if (u.y > LEVEL - .03) { u.y = .06; u.a = Math.random() * Math.PI * 2; u.r = Math.random(); }
+      var rr = (wall(u.y) - .14) * Math.sqrt(u.r);
+      b.position.set(Math.cos(u.a) * rr + Math.sin(t * 3 + u.a) * .02, u.y, Math.sin(u.a) * rr);
+    });
+    leaves.forEach(function (p, k) { p.rotation.x = Math.sin(t * 1.3 + k) * .1; p.rotation.z = Math.cos(t * 1.1 + k) * .06; });
+    mols.forEach(function (m, k) {
+      var u = m.userData; u.a += dt * .3 * (1 + (fizz - 1) * .4);
+      m.position.set(Math.cos(u.a) * 1.75, u.y + Math.sin(t * 1.2 + k * 2) * .12, Math.sin(u.a) * 1.3);
+      m.rotation.set(t * .5 + k, t * .7, 0);
+    });
+    root.rotation.y = t * .25;
+    world.rotation.y += (ptr.x * .45 - world.rotation.y) * .04;
+    world.rotation.x += (ptr.y * .12 - world.rotation.x) * .05;
+    renderer.render(scene, cam);
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();

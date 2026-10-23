@@ -98,10 +98,6 @@ h1, h2, h3, h4 { font-family: var(--hd); font-weight: 800; line-height: 1.02; le
 .stage .fallback { position: absolute; inset: 0; display: grid; place-items: center; }
 .stage .fallback svg { width: 46%; height: auto; }
 .stage.has-gl .fallback { display: none; }
-.orb .s1 { top: 6%; right: -2%; --rot: 5deg; }
-.orb .s2 { bottom: 20%; right: 2%; --rot: -7deg; animation-delay: -2s; }
-.orb .s3 { bottom: 10%; left: 0; --rot: -4deg; animation-delay: -1s; }
-.orb .hint { position: absolute; z-index: 4; left: 50%; top: 2%; transform: translateX(-50%); font-size: 12.5px; font-weight: 800; color: var(--green); background: rgba(255,253,248,.85); padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
 
 
 /* result cards */
