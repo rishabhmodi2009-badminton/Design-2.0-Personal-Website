@@ -130,6 +130,7 @@ h1, h2, h3, h4 { font-family: var(--hd); font-weight: 800; line-height: 1.02; le
 .story .tile img.logo { width: 92px; height: 92px; clip-path: circle(48.5%); }
 .ph img.badge { position: static; width: 168px; height: auto; margin-top: 30px; border-radius: 18px; box-shadow: 0 10px 24px -14px rgba(59,38,24,.5); }
 .story .tile img.badge { width: 104px; height: auto; border-radius: 14px; }
+.story .tile img.badge.pad { width: 120px; padding: 10px 12px; background: #fff; }
 .story-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 /* research */
 .q-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
