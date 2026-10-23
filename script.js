@@ -17,7 +17,7 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
       var el = en.target, to = +el.getAttribute('data-count'), t0 = performance.now();
       (function tick(t) {
         var k = Math.min(1, (t - t0) / 1400);
-        el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+        el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))) + (el.getAttribute('data-suffix') || '');
         if (k < 1) requestAnimationFrame(tick);
       })(t0);
     });
@@ -119,17 +119,29 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
     return new THREE.CanvasTexture(c);
   }
 
-  /* badminton: cork, green band, feather skirt with quills */
+  /* badminton: leather-capped cork, green tape, 16 overlapping feathers held by two thread rings */
   var shuttle = new THREE.Group();
-  var cork = new THREE.Mesh(new THREE.SphereGeometry(.15, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), std(0xFFFDF8, .5));
-  cork.rotation.x = Math.PI; shuttle.add(cork);
-  var band = new THREE.Mesh(new THREE.CylinderGeometry(.155, .155, .06, 24), std(0x2E7D3E, .5)); band.position.y = .03; shuttle.add(band);
-  var skirt = new THREE.Mesh(new THREE.CylinderGeometry(.4, .15, .58, 16, 1, true), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .7, side: THREE.DoubleSide }));
-  skirt.position.y = .35; shuttle.add(skirt);
-  var quills = [];
-  for (i = 0; i < 16; i++) { var qa = i / 16 * Math.PI * 2; quills.push(new THREE.Vector3(Math.cos(qa) * .155, .06, Math.sin(qa) * .155), new THREE.Vector3(Math.cos(qa) * .405, .64, Math.sin(qa) * .405)); }
-  shuttle.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(quills), new THREE.LineBasicMaterial({ color: 0xb8aa98 })));
-  var rim2 = new THREE.Mesh(new THREE.TorusGeometry(.4, .012, 6, 32), std(0xd8ccbc, .6)); rim2.rotation.x = Math.PI / 2; rim2.position.y = .64; shuttle.add(rim2);
+  var cork = new THREE.Mesh(new THREE.SphereGeometry(.15, 32, 16, 0, Math.PI * 2, Math.PI / 2, Math.PI / 2), std(0xFFFDF8, .45));
+  shuttle.add(cork);
+  var base = new THREE.Mesh(new THREE.CylinderGeometry(.15, .15, .09, 32), std(0xFFFDF8, .45)); base.position.y = .045; shuttle.add(base);
+  var tape = new THREE.Mesh(new THREE.CylinderGeometry(.153, .153, .035, 32), std(0x2E7D3E, .5)); tape.position.y = .07; shuttle.add(tape);
+  var vane = new THREE.Shape();
+  vane.moveTo(-.02, 0); vane.lineTo(-.068, .4); vane.quadraticCurveTo(-.07, .52, 0, .54); vane.quadraticCurveTo(.07, .52, .068, .4); vane.lineTo(.02, 0);
+  var vaneGeo = new THREE.ShapeGeometry(vane, 12), tilt = .34, R0 = .12, Y0 = .08;
+  var featherM = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0x2a2a2a, roughness: .55, side: THREE.DoubleSide });
+  var shaftM = std(0xd9cfc2, .5), shaftGeo = new THREE.CylinderGeometry(.004, .006, .44, 6);
+  for (i = 0; i < 16; i++) {
+    var arm = new THREE.Group(); arm.rotation.y = i / 16 * Math.PI * 2; arm.position.y = Y0;
+    var f = new THREE.Group(); f.position.z = R0 + (i % 2) * .006; f.rotation.x = tilt;
+    f.add(new THREE.Mesh(vaneGeo, featherM));
+    var shaft = new THREE.Mesh(shaftGeo, shaftM); shaft.position.set(0, .22, .003); f.add(shaft);
+    arm.add(f); shuttle.add(arm);
+  }
+  [.17, .29].forEach(function (h) {
+    var ring = new THREE.Mesh(new THREE.TorusGeometry(R0 + h * Math.sin(tilt) + .008, .009, 6, 48), std(0x24543a, .6));
+    ring.rotation.x = Math.PI / 2; ring.position.y = Y0 + h * Math.cos(tilt); shuttle.add(ring);
+  });
+  shuttle.scale.setScalar(1.1);
 
   /* AI: a chip with pins and an "AI" die */
   var chip = new THREE.Group(), side = std(0x174f5c, .4, .2);

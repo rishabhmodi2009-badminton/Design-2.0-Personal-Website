@@ -138,7 +138,7 @@ h1, h2, h3, h4 { font-family: var(--hd); font-weight: 800; line-height: 1.02; le
 .story .tile img.badge { width: 104px; height: auto; border-radius: 14px; }
 .story-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 /* research */
-.q-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.q-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .qcard { padding: 26px 24px; border-radius: var(--r); background: var(--card); box-shadow: var(--shadow); border: 2px solid transparent; display: flex; flex-direction: column; transition: border-color .3s, transform .5s var(--spring); }
 a.qcard:hover { border-color: var(--ink); transform: translateY(-5px); }
 .qcard .pill { align-self: flex-start; }
@@ -147,10 +147,15 @@ a.qcard:hover { border-color: var(--ink); transform: translateY(-5px); }
 .qcard .open { margin-top: auto; padding-top: 16px; font-weight: 800; font-size: 14px; color: var(--green); }
 .qcard .soon { margin-top: auto; padding-top: 16px; font-size: 13px; color: var(--dim); font-weight: 700; }
 .lab { background: var(--coffee); color: #f6ecdf; overflow: hidden; }
-.lab .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.lab .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
 .lab h2 { color: #fff; }
 .lab .lead { color: #dcc9b5; margin-top: 20px; }
-.findings { list-style: none; display: grid; gap: 14px; }
+.steps { list-style: none; display: grid; gap: 18px; margin-top: 30px; padding-left: 22px; border-left: 3px dashed rgba(243,234,219,.25); }
+.steps li { position: relative; color: #dcc9b5; font-size: 15.5px; }
+.steps li::before { content: ""; position: absolute; left: -32px; top: 5px; width: 17px; height: 17px; border-radius: 50%; background: #BFD9A8; box-shadow: 0 0 0 4px var(--coffee); }
+.steps small { display: block; font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--sun); }
+.steps b { display: block; font-family: var(--hd); font-weight: 800; font-size: 20px; color: #fff; margin: 2px 0 4px; }
+.findings { margin-top: 8px; list-style: none; display: grid; gap: 14px; }
 .findings li { padding: 18px 22px; border-radius: var(--r2); background: rgba(255,255,255,.06); border: 2px dashed rgba(243,234,219,.2); color: #dcc9b5; font-size: 15.5px; }
 .findings b { display: block; font-family: var(--hd); font-weight: 800; font-size: 19px; color: #BFD9A8; margin-bottom: 2px; }
 
