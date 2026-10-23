@@ -79,7 +79,6 @@ h1, h2, h3, h4 { font-family: var(--hd); font-weight: 800; line-height: 1.02; le
 .bar nav a:hover { background: rgba(46,125,62,.1); color: var(--green); }
 .bar nav a.on { color: var(--green); }
 .bar nav a.on::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 3px; height: 2.5px; border-radius: 2px; background: currentColor; }
-.hello { flex: none; }
 
 /* home hero */
 .hero { padding: clamp(46px, 6vw, 84px) 0 clamp(40px, 5vw, 70px); overflow: hidden; }
@@ -262,7 +261,6 @@ h1, h2, h3, h4 { font-family: var(--hd); font-weight: 800; line-height: 1.02; le
   .bar { height: auto; padding: 10px 0 6px; }
   .bar .wrap { flex-wrap: wrap; gap: 0; }
   .logo { height: 46px; font-size: 20px; }
-  .hello { margin-left: auto; height: 40px; padding: 0 16px; font-size: 14px; }
   .bar nav { order: 3; width: 100%; margin: 0; overflow-x: auto; scrollbar-width: none; }
   .bar nav::-webkit-scrollbar { display: none; }
   .bar nav a { font-size: 14px; padding: 7px 12px; }
