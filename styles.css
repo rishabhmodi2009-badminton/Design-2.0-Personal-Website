@@ -106,7 +106,6 @@ h1, h2, h3, h4 { font-family: var(--hd); font-weight: 800; line-height: 1.02; le
 .res-card { position: relative; border-radius: var(--r); padding: 30px 28px 32px; color: #fff; overflow: hidden; transition: transform .5s var(--spring); }
 .res-card:hover { transform: translateY(-6px) rotate(-1deg); }
 .res-card b { display: block; font-family: var(--hd); font-weight: 900; font-size: clamp(54px, 5vw, 72px); line-height: 1; letter-spacing: -.03em; }
-.res-card b.word-stat { font-size: clamp(40px, 3.6vw, 52px); padding-top: 8px; }
 .res-card b sup { font-size: .45em; vertical-align: top; position: relative; top: .25em; margin-left: 2px; }
 .res-card p { margin-top: 12px; font-weight: 700; font-size: 16px; line-height: 1.45; opacity: .95; }
 .res-card i { position: absolute; right: -18px; top: -18px; width: 90px; height: 90px; border-radius: 50%; background: rgba(255,255,255,.12); }
