@@ -216,7 +216,7 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
 })();
 
 
-/* 3D research hero: a flask of coffee-ground "tea" fertilizer with rising bubbles and a seedling, circled by ammonium and phosphate; tap to fizz */
+/* 3D research hero: the coffee-ground fertilizer flask (current research) circled by the past papers; tap to fizz */
 (function () {
   var THREE = window.THREE, stage = document.querySelector('.stage[data-scene="flask"]');
   if (!THREE || !stage) return;
@@ -273,21 +273,54 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
     root.add(b); bubbles.push(b);
   }
 
-  /* nutrient molecules: ammonium (NH4+) and phosphate (PO4) in ball-and-stick form */
-  var tet = [[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]].map(function (v) { return new THREE.Vector3(v[0], v[1], v[2]).normalize(); });
-  var bondM = std(0xd9cfc2, .5);
-  function molecule(center, cR, outer, oR, len) {
-    var g = new THREE.Group();
-    g.add(new THREE.Mesh(new THREE.SphereGeometry(cR, 24, 18), std(center, .35)));
-    tet.forEach(function (d) {
-      var atom = new THREE.Mesh(new THREE.SphereGeometry(oR, 18, 14), std(outer, .4)); atom.position.copy(d).multiplyScalar(len); g.add(atom);
-      var bond = new THREE.Mesh(new THREE.CylinderGeometry(.025, .025, len, 8), bondM);
-      bond.position.copy(d).multiplyScalar(len / 2); bond.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), d); g.add(bond);
-    });
-    return g;
-  }
-  var mols = [molecule(0x1F6E80, .15, 0xFFFDF8, .09, .32), molecule(0xE2A93B, .16, 0xB04A22, .11, .36), molecule(0x1F6E80, .15, 0xFFFDF8, .09, .32)];
-  mols.forEach(function (m, k) { m.userData = { a: k / 3 * Math.PI * 2, y: .5 + k * .55 }; m.scale.setScalar(k === 1 ? 1 : .85); world.add(m); });
+  /* past papers orbiting the flask: card and coins (cashless society), a marked-down price tag (price anchoring), a tipped scale (AI bias) */
+  function textTex(draw, w, h) { var c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h); var t = new THREE.CanvasTexture(c); t.anisotropy = 4; return t; }
+
+  var cash = new THREE.Group();
+  var cardTex = textTex(function (x, w, h) {
+    x.fillStyle = '#1F6E80'; x.fillRect(0, 0, w, h);
+    x.fillStyle = '#E2A93B'; x.fillRect(34, 62, 62, 48);
+    x.fillStyle = 'rgba(255,255,255,.9)'; x.font = 'bold 30px Menlo, monospace'; x.fillText('•••• 2026', 34, 178);
+    x.fillStyle = 'rgba(255,255,255,.35)'; x.beginPath(); x.arc(w - 70, 60, 26, 0, 7); x.fill(); x.beginPath(); x.arc(w - 46, 60, 26, 0, 7); x.fill();
+  }, 384, 240);
+  var cardEdge = std(0x17596a, .4);
+  var card = new THREE.Mesh(new THREE.BoxGeometry(.9, .56, .025), [cardEdge, cardEdge, cardEdge, cardEdge, new THREE.MeshStandardMaterial({ map: cardTex, roughness: .35 }), cardEdge]);
+  card.rotation.z = .18; cash.add(card);
+  var coinM = std(0xE2A93B, .3, .55), coinGeo = new THREE.CylinderGeometry(.17, .17, .045, 32);
+  for (i = 0; i < 3; i++) { var coin = new THREE.Mesh(coinGeo, coinM); coin.rotation.x = Math.PI / 2; coin.position.set(.42, -.3, .06 + i * .05); cash.add(coin); }
+
+  var tag = new THREE.Group();
+  var ts = new THREE.Shape();
+  ts.moveTo(-.38, -.22); ts.lineTo(.22, -.22); ts.lineTo(.42, 0); ts.lineTo(.22, .22); ts.lineTo(-.38, .22); ts.closePath();
+  var hole = new THREE.Path(); hole.absarc(.26, 0, .045, 0, Math.PI * 2, true); ts.holes.push(hole);
+  var tagBody = new THREE.Mesh(new THREE.ExtrudeGeometry(ts, { depth: .04, bevelEnabled: true, bevelThickness: .01, bevelSize: .01, bevelSegments: 1 }), std(0xB04A22, .5));
+  tagBody.position.z = -.02; tag.add(tagBody);
+  var priceTex = textTex(function (x, w, h) {
+    x.fillStyle = '#B04A22'; x.fillRect(0, 0, w, h);
+    x.fillStyle = 'rgba(255,253,248,.75)'; x.font = 'bold 54px Georgia'; x.fillText('$40', 20, 78);
+    x.strokeStyle = '#FFFDF8'; x.lineWidth = 6; x.beginPath(); x.moveTo(14, 60); x.lineTo(132, 46); x.stroke();
+    x.fillStyle = '#FFFDF8'; x.font = 'bold 80px Georgia'; x.fillText('$20', 20, 176);
+  }, 256, 200);
+  var priceFace = new THREE.Mesh(new THREE.PlaneGeometry(.5, .4), new THREE.MeshStandardMaterial({ map: priceTex, roughness: .5 }));
+  priceFace.position.set(-.1, 0, .035); tag.add(priceFace);
+  var string = new THREE.Mesh(new THREE.TorusGeometry(.12, .008, 6, 24, Math.PI * 1.4), std(0xFFFDF8, .6));
+  string.position.set(.36, .06, 0); string.rotation.z = -.9; tag.add(string);
+
+  var scale = new THREE.Group(), brass = std(0xE2A93B, .3, .5), wood = std(0x523624, .6);
+  var foot = new THREE.Mesh(new THREE.CylinderGeometry(.2, .24, .06, 28), wood); foot.position.y = -.5; scale.add(foot);
+  var post = new THREE.Mesh(new THREE.CylinderGeometry(.025, .03, .78, 10), brass); post.position.y = -.1; scale.add(post);
+  var beam = new THREE.Group(); beam.position.y = .28; beam.rotation.z = -.22; scale.add(beam);
+  beam.add(new THREE.Mesh(new THREE.BoxGeometry(.9, .035, .035), brass));
+  [-1, 1].forEach(function (side) {
+    var hang = new THREE.Group(); hang.position.x = side * .43; beam.add(hang);
+    var rod = new THREE.Mesh(new THREE.CylinderGeometry(.008, .008, .28, 6), brass); rod.position.y = -.14; hang.add(rod);
+    var pan = new THREE.Mesh(new THREE.CylinderGeometry(.17, .12, .04, 24), brass); pan.position.y = -.3; hang.add(pan);
+    hang.rotation.z = .22;
+    if (side > 0) { var weight = new THREE.Mesh(new THREE.BoxGeometry(.14, .14, .14), std(0x1F6E80, .4)); weight.position.y = -.21; hang.add(weight); }
+  });
+
+  var papers = [cash, tag, scale];
+  papers.forEach(function (m, k) { m.userData = { a: k / 3 * Math.PI * 2 + .4, y: .45 + k * .55 }; m.scale.setScalar(k === 2 ? 1.25 : 1.1); world.add(m); });
 
   var fizz = 1;
   stage.addEventListener('click', function () { fizz = 4; });
@@ -314,10 +347,10 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
       b.position.set(Math.cos(u.a) * rr + Math.sin(t * 3 + u.a) * .02, u.y, Math.sin(u.a) * rr);
     });
     leaves.forEach(function (p, k) { p.rotation.x = Math.sin(t * 1.3 + k) * .1; p.rotation.z = Math.cos(t * 1.1 + k) * .06; });
-    mols.forEach(function (m, k) {
+    papers.forEach(function (m, k) {
       var u = m.userData; u.a += dt * .3 * (1 + (fizz - 1) * .4);
-      m.position.set(Math.cos(u.a) * 1.75, u.y + Math.sin(t * 1.2 + k * 2) * .12, Math.sin(u.a) * 1.3);
-      m.rotation.set(t * .5 + k, t * .7, 0);
+      m.position.set(Math.cos(u.a) * 1.55, u.y + Math.sin(t * 1.2 + k * 2) * .12, Math.sin(u.a) * 1.15);
+      m.rotation.set(Math.sin(t * .8 + k) * .15, Math.sin(t * .6 + k) * .45 - world.rotation.y, Math.sin(t * .7 + k) * .08);
     });
     root.rotation.y = t * .25;
     world.rotation.y += (ptr.x * .45 - world.rotation.y) * .04;
@@ -326,4 +359,82 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
     requestAnimationFrame(loop);
   }
   loop();
+})();
+
+/* In-page document viewer: PDFs open in an overlay, rendered page by page with PDF.js so they work on phones too */
+(function () {
+  var links = document.querySelectorAll('a[data-doc]');
+  if (!links.length) return;
+  var PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+  var ready = null, viewer, pagesEl, titleEl, countEl, openBtn, task = null, lastFocus = null;
+
+  function loadLib() {
+    if (!ready) ready = new Promise(function (res, rej) {
+      var s = document.createElement('script'); s.src = PDFJS + 'pdf.min.js';
+      s.onload = function () { window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS + 'pdf.worker.min.js'; res(window.pdfjsLib); };
+      s.onerror = rej; document.head.appendChild(s);
+    });
+    return ready;
+  }
+
+  function build() {
+    viewer = document.createElement('div');
+    viewer.className = 'viewer'; viewer.setAttribute('role', 'dialog'); viewer.setAttribute('aria-modal', 'true'); viewer.hidden = true;
+    viewer.innerHTML = '<div class="viewer-box"><div class="viewer-head"><div><h3 class="viewer-title"></h3><span class="viewer-count"></span></div>' +
+      '<a class="viewer-open" target="_blank" rel="noopener">Open PDF ↗</a><button type="button" class="viewer-close" aria-label="Close document">×</button></div>' +
+      '<div class="viewer-pages" tabindex="0"></div></div>';
+    document.body.appendChild(viewer);
+    pagesEl = viewer.querySelector('.viewer-pages'); titleEl = viewer.querySelector('.viewer-title');
+    countEl = viewer.querySelector('.viewer-count'); openBtn = viewer.querySelector('.viewer-open');
+    viewer.querySelector('.viewer-close').addEventListener('click', close);
+    viewer.addEventListener('click', function (e) { if (e.target === viewer) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !viewer.hidden) close(); });
+  }
+
+  function close() {
+    viewer.hidden = true; document.documentElement.classList.remove('viewer-on');
+    if (task) { task.destroy(); task = null; }
+    pagesEl.innerHTML = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  function open(url, title) {
+    if (!viewer) build();
+    lastFocus = document.activeElement;
+    titleEl.textContent = title; countEl.textContent = 'Loading…'; openBtn.href = url;
+    pagesEl.innerHTML = '<div class="viewer-loading">Loading document…</div>';
+    viewer.hidden = false; document.documentElement.classList.add('viewer-on');
+    viewer.querySelector('.viewer-close').focus();
+    loadLib().then(function (lib) {
+      task = lib.getDocument(url);
+      return task.promise;
+    }).then(function (pdf) {
+      countEl.textContent = pdf.numPages + (pdf.numPages === 1 ? ' page' : ' pages');
+      pagesEl.innerHTML = '';
+      var width = pagesEl.clientWidth - 32, dpr = Math.min(2, window.devicePixelRatio || 1), chain = Promise.resolve();
+      for (var n = 1; n <= pdf.numPages; n++) (function (n) {
+        var canvas = document.createElement('canvas'); canvas.className = 'viewer-page'; pagesEl.appendChild(canvas);
+        chain = chain.then(function () {
+          if (viewer.hidden) return;
+          return pdf.getPage(n).then(function (page) {
+            var base = page.getViewport({ scale: 1 }), scale = width / base.width, vp = page.getViewport({ scale: scale * dpr });
+            canvas.width = vp.width; canvas.height = vp.height;
+            canvas.style.width = width + 'px'; canvas.style.height = (vp.height / dpr) + 'px';
+            return page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+          });
+        });
+      })(n);
+    }).catch(function () {
+      if (viewer.hidden) return;
+      countEl.textContent = '';
+      pagesEl.innerHTML = '<div class="viewer-loading">This document couldn’t be shown here. Use “Open PDF” instead.</div>';
+    });
+  }
+
+  links.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+      e.preventDefault(); open(a.getAttribute('href'), a.getAttribute('data-doc'));
+    });
+  });
 })();
