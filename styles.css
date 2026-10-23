@@ -136,7 +136,7 @@ h1, h2, h3, h4 { font-family: var(--hd); font-weight: 800; line-height: 1.02; le
 .story .tile img.logo { width: 92px; height: 92px; clip-path: circle(48.5%); }
 .ph img.badge { position: static; width: 168px; height: auto; margin-top: 30px; border-radius: 18px; box-shadow: 0 10px 24px -14px rgba(59,38,24,.5); }
 .story .tile img.badge { width: 104px; height: auto; border-radius: 14px; }
-.story-link { margin-top: 24px; }
+.story-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 /* research */
 .q-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .qcard { padding: 26px 24px; border-radius: var(--r); background: var(--card); box-shadow: var(--shadow); border: 2px solid transparent; display: flex; flex-direction: column; transition: border-color .3s, transform .5s var(--spring); }
@@ -154,26 +154,8 @@ a.qcard:hover { border-color: var(--ink); transform: translateY(-5px); }
 .findings li { padding: 18px 22px; border-radius: var(--r2); background: rgba(255,255,255,.06); border: 2px dashed rgba(243,234,219,.2); color: #dcc9b5; font-size: 15.5px; }
 .findings b { display: block; font-family: var(--hd); font-weight: 800; font-size: 19px; color: #BFD9A8; margin-bottom: 2px; }
 
-/* documents */
-.doc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.doc { display: grid; grid-template-columns: 58px 1fr; gap: 16px; align-items: start; padding: 20px 20px 18px; background: var(--card); border-radius: var(--r2); box-shadow: var(--shadow); transition: transform .45s var(--spring), box-shadow .45s; }
-.doc:hover { transform: translateY(-5px); box-shadow: 0 1px 0 rgba(43,29,20,.06), 0 26px 44px -22px rgba(59,38,24,.55); }
-.doc .fi { position: relative; width: 58px; height: 70px; border-radius: 8px 18px 8px 8px; display: grid; place-items: end center; padding-bottom: 9px; color: #fff; font-weight: 900; font-size: 12px; letter-spacing: .06em; }
-.doc .fi::before { content: ""; position: absolute; right: 0; top: 0; width: 18px; height: 18px; background: rgba(255,255,255,.35); border-radius: 0 0 0 8px; }
-.doc h4 { font-family: var(--hd); font-weight: 800; font-size: 18.5px; line-height: 1.2; letter-spacing: -.01em; }
-.doc p { font-size: 14px; color: var(--mut); margin-top: 5px; line-height: 1.45; }
-.doc .meta { display: flex; gap: 10px; align-items: center; margin-top: 10px; font-size: 12.5px; font-weight: 800; color: var(--dim); }
-.doc .meta .go { margin-left: auto; color: var(--green); }
-.doc .meta .soon { margin-left: auto; color: var(--dim); }
-.doc.soon { cursor: default; }
-.doc.soon:hover { transform: none; box-shadow: var(--shadow); }
-.docs { background: var(--paper3); }
-.crumb { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 14px; color: var(--mut); margin-bottom: 14px; }
-.crumb a:hover { color: var(--c); }
-.visual .stage { inset: 0; }
-.visual .hint { position: absolute; z-index: 4; left: 50%; bottom: 0; transform: translateX(-50%); font-size: 12.5px; font-weight: 800; color: var(--c); background: rgba(255,253,248,.85); padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
-@media (max-width: 1000px) { .q-grid, .doc-grid { grid-template-columns: 1fr 1fr; } .lab .wrap { grid-template-columns: 1fr; } }
-@media (max-width: 640px) { .q-grid, .doc-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) { .q-grid { grid-template-columns: 1fr 1fr; } .lab .wrap { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .q-grid { grid-template-columns: 1fr; } }
 
 .charities { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: -4px 0 24px; max-width: 62ch; }
 .charities > div { padding: 18px 20px; background: var(--card); border-radius: var(--r2); border-left: 5px solid var(--terra); box-shadow: var(--shadow); }
@@ -254,6 +236,7 @@ a.qcard:hover { border-color: var(--ink); transform: translateY(-5px); }
 .aw h3 { font-size: 22px; line-height: 1.2; }
 .aw .org { display: block; margin: 6px 0 10px; font-weight: 800; font-size: 14px; }
 .aw p { color: var(--mut); font-size: 15px; }
+.aw-link { display: inline-block; margin-top: 12px; font-weight: 800; font-size: 14px; color: var(--green); border-bottom: 2px solid currentColor; }
 .honors { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
 .award { padding: 12px 20px; border-radius: 999px; font-weight: 800; font-size: 15.5px; border: 2px solid var(--ink); background: var(--card); transition: transform .45s var(--spring); }
 .award:hover { transform: translateY(-4px) rotate(-2deg); }
