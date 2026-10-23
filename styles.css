@@ -316,3 +316,12 @@ a.qcard:hover { border-color: var(--ink); transform: translateY(-5px); }
   .viewer-title { font-size: 18px; }
   .viewer-pages { padding: 10px; gap: 10px; }
 }
+
+/* research scene: hint, drag cursor, paper caption */
+.visual .hint { position: absolute; z-index: 4; left: 50%; top: 0; transform: translateX(-50%); font-size: 12.5px; font-weight: 800; color: var(--c); background: rgba(255,253,248,.85); padding: 4px 12px; border-radius: 999px; white-space: nowrap; pointer-events: none; }
+.stage.dragging { cursor: grabbing; }
+.scene-cap { position: absolute; z-index: 5; left: 50%; bottom: 2%; width: min(320px, 92%); transform: translate(-50%, 10px); opacity: 0; padding: 14px 18px; background: var(--card); border: 2px solid var(--ink); border-radius: var(--r2); box-shadow: 0 4px 0 var(--ink); transition: opacity .3s var(--ease), transform .4s var(--spring); }
+.scene-cap.in { opacity: 1; transform: translate(-50%, 0); }
+.scene-cap small { display: block; font-weight: 800; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--terra); }
+.scene-cap b { display: block; font-family: var(--hd); font-weight: 800; font-size: 18px; line-height: 1.2; margin: 3px 0 8px; }
+.scene-cap a { font-weight: 800; font-size: 14px; color: var(--green); border-bottom: 2px solid currentColor; }

@@ -216,7 +216,7 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
 })();
 
 
-/* 3D research hero: the coffee-ground fertilizer flask (current research) circled by the past papers; tap to fizz */
+/* 3D research hero: the coffee-ground fertilizer flask (current research) circled by the four past papers; drag to spin, tap an object to see its paper, tap the flask to make it erupt */
 (function () {
   var THREE = window.THREE, stage = document.querySelector('.stage[data-scene="flask"]');
   if (!THREE || !stage) return;
@@ -319,18 +319,82 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
     if (side > 0) { var weight = new THREE.Mesh(new THREE.BoxGeometry(.14, .14, .14), std(0x1F6E80, .4)); weight.position.y = -.21; hang.add(weight); }
   });
 
-  var papers = [cash, tag, scale];
-  papers.forEach(function (m, k) { m.userData = { a: k / 3 * Math.PI * 2 + .4, y: .45 + k * .55 }; m.scale.setScalar(k === 2 ? 1.25 : 1.1); world.add(m); });
+  /* air conditioner with cool airflow (AI and cooling article) */
+  var ac = new THREE.Group(), white = std(0xFFFDF8, .45), slatM = std(0xd9cfc2, .5);
+  var acBody = new THREE.Mesh(new THREE.BoxGeometry(1, .34, .28), white); ac.add(acBody);
+  for (i = 0; i < 4; i++) { var slat = new THREE.Mesh(new THREE.BoxGeometry(.86, .012, .02), slatM); slat.position.set(0, -.1 + i * .025, .145); ac.add(slat); }
+  var led = new THREE.Mesh(new THREE.SphereGeometry(.022, 12, 10), new THREE.MeshStandardMaterial({ color: 0x4FA3D8, emissive: 0x4FA3D8, emissiveIntensity: .8 })); led.position.set(.4, .08, .145); ac.add(led);
+  var airM = new THREE.MeshStandardMaterial({ color: 0xBFE3F2, transparent: true, opacity: .7, roughness: .3 }), airs = [];
+  for (i = 0; i < 3; i++) { var air = new THREE.Mesh(new THREE.TorusGeometry(.16 + i * .02, .012, 6, 24, Math.PI), airM); air.rotation.z = Math.PI; air.position.set(-.28 + i * .28, -.3, .1); ac.add(air); airs.push(air); }
+
+  var papers = [cash, tag, scale, ac];
+  var PAPERS = [
+    { title: 'Should we fear a cashless society?', kind: 'John Locke essay', doc: 'docs/cashless-society-essay.pdf' },
+    { title: 'Why price tags trick us', kind: 'Price anchoring paper', doc: 'docs/price-anchoring-paper.pdf' },
+    { title: 'How do biases get into AI?', kind: 'AI bias research', doc: 'docs/ai-bias-project.pdf' },
+    { title: 'Can AI save more energy than it consumes?', kind: 'AI and cooling article', doc: 'docs/ai-cooling-article.pdf' }
+  ];
+  papers.forEach(function (m, k) { m.userData = { a: k / 4 * Math.PI * 2 + .4, y: .4 + k * .42, base: k === 2 ? 1.25 : 1.1, pop: 0 }; m.scale.setScalar(m.userData.base); world.add(m); });
+
+  /* bubbles that spray out of the neck when the flask is tapped */
+  var sprayM = new THREE.MeshStandardMaterial({ color: 0xf3d9b8, roughness: .15, transparent: true, opacity: .85 }), spray = [];
+  for (i = 0; i < 22; i++) { var sp = new THREE.Mesh(new THREE.SphereGeometry(.04 + Math.random() * .04, 10, 8), sprayM); sp.visible = false; sp.userData = { v: new THREE.Vector3(), life: 0 }; root.add(sp); spray.push(sp); }
+  function erupt() {
+    spray.forEach(function (sp) {
+      var a = Math.random() * Math.PI * 2, out = .4 + Math.random() * .9;
+      sp.position.set(0, 2, 0); sp.userData.v.set(Math.cos(a) * out, 2.2 + Math.random() * 1.6, Math.sin(a) * out); sp.userData.life = 1; sp.visible = true;
+    });
+  }
+
+  /* caption that names the paper an object stands for */
+  var cap = document.createElement('div'); cap.className = 'scene-cap'; cap.hidden = true;
+  cap.innerHTML = '<small></small><b></b><a href="#">Read it →</a>';
+  stage.parentNode.appendChild(cap);
+  var capTimer = null;
+  function showCap(k) {
+    var p = PAPERS[k], link = document.querySelector('a[data-doc][href="' + p.doc + '"]');
+    cap.querySelector('small').textContent = p.kind; cap.querySelector('b').textContent = p.title;
+    cap.querySelector('a').onclick = function (e) { e.preventDefault(); if (link) link.click(); };
+    cap.hidden = false; cap.classList.remove('in'); void cap.offsetWidth; cap.classList.add('in');
+    clearTimeout(capTimer); capTimer = setTimeout(function () { cap.classList.remove('in'); setTimeout(function () { cap.hidden = true; }, 300); }, 4500);
+  }
 
   var fizz = 1;
-  stage.addEventListener('click', function () { fizz = 4; });
-
   function size() { var w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
   size(); new ResizeObserver(size).observe(stage);
 
-  var ptr = { x: 0, y: 0 }, tgt = { x: 0, y: 0 };
-  stage.addEventListener('pointermove', function (ev) { var r = stage.getBoundingClientRect(); tgt.x = (ev.clientX - r.left) / r.width * 2 - 1; tgt.y = (ev.clientY - r.top) / r.height * 2 - 1; });
-  stage.addEventListener('pointerleave', function () { tgt.x = 0; tgt.y = 0; });
+  /* hover tilt, drag to spin with momentum, tap to pick */
+  var ptr = { x: 0, y: 0 }, tgt = { x: 0, y: 0 }, spin = 0, tilt = 0, vel = 0, drag = null;
+  var ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+  stage.style.touchAction = 'pan-y';
+  stage.addEventListener('pointerdown', function (ev) { drag = { x: ev.clientX, y: ev.clientY, moved: 0, lastX: ev.clientX }; stage.setPointerCapture(ev.pointerId); stage.classList.add('dragging'); });
+  stage.addEventListener('pointermove', function (ev) {
+    var r = stage.getBoundingClientRect(); tgt.x = (ev.clientX - r.left) / r.width * 2 - 1; tgt.y = (ev.clientY - r.top) / r.height * 2 - 1;
+    if (!drag) return;
+    var dx = ev.clientX - drag.lastX; drag.lastX = ev.clientX;
+    drag.moved += Math.abs(dx) + Math.abs(ev.clientY - drag.y) * .1;
+    spin += dx * .012; vel = dx * .012;
+    tilt = Math.max(-.35, Math.min(.35, (ev.clientY - drag.y) * .004));
+  });
+  function release(ev) {
+    if (!drag) return;
+    var tap = drag.moved < 6; drag = null; stage.classList.remove('dragging');
+    if (!tap) return;
+    vel = 0;
+    var r = stage.getBoundingClientRect();
+    ndc.set((ev.clientX - r.left) / r.width * 2 - 1, -((ev.clientY - r.top) / r.height * 2 - 1));
+    ray.setFromCamera(ndc, cam);
+    var hits = ray.intersectObjects(papers.concat([glass, liquid, surface, label, stem]), true);
+    if (!hits.length) { fizz = 4; return; }
+    var o = hits[0].object;
+    while (o && papers.indexOf(o) < 0 && o !== root && o.parent) o = o.parent;
+    var k = papers.indexOf(o);
+    if (k >= 0) { papers[k].userData.pop = 1; showCap(k); }
+    else { fizz = 5; erupt(); }
+  }
+  stage.addEventListener('pointerup', release);
+  stage.addEventListener('pointercancel', function () { drag = null; stage.classList.remove('dragging'); });
+  stage.addEventListener('pointerleave', function () { if (!drag) { tgt.x = 0; tgt.y = 0; } });
 
   var visible = true, running = false, t = 0, last = performance.now();
   new IntersectionObserver(function (l) { visible = l[0].isIntersecting; if (visible && !running) { last = performance.now(); loop(); } }).observe(stage);
@@ -340,21 +404,30 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
     var now = performance.now(), dt = Math.min(.05, (now - last) / 1000); last = now; t += dt;
     ptr.x += (tgt.x - ptr.x) * .06; ptr.y += (tgt.y - ptr.y) * .06;
     fizz += (1 - fizz) * dt * .8;
+    if (!drag) { spin += vel; vel *= .94; tilt *= .95; }
     bubbles.forEach(function (b) {
       var u = b.userData; u.y += dt * u.sp * fizz;
       if (u.y > LEVEL - .03) { u.y = .06; u.a = Math.random() * Math.PI * 2; u.r = Math.random(); }
       var rr = (wall(u.y) - .14) * Math.sqrt(u.r);
       b.position.set(Math.cos(u.a) * rr + Math.sin(t * 3 + u.a) * .02, u.y, Math.sin(u.a) * rr);
     });
-    leaves.forEach(function (p, k) { p.rotation.x = Math.sin(t * 1.3 + k) * .1; p.rotation.z = Math.cos(t * 1.1 + k) * .06; });
+    spray.forEach(function (sp) {
+      var u = sp.userData; if (u.life <= 0) { sp.visible = false; return; }
+      u.v.y -= dt * 4.5; sp.position.addScaledVector(u.v, dt); u.life -= dt * .8; sp.scale.setScalar(Math.max(.01, u.life));
+    });
+    leaves.forEach(function (p, k) { p.rotation.x = Math.sin(t * 1.3 + k) * .1 + (fizz - 1) * .04; p.rotation.z = Math.cos(t * 1.1 + k) * .06; });
+    airs.forEach(function (a, k) { var f = (t * .8 + k / 3) % 1; a.position.y = -.25 - f * .35; a.material.opacity = .75 * (1 - f); });
     papers.forEach(function (m, k) {
       var u = m.userData; u.a += dt * .3 * (1 + (fizz - 1) * .4);
-      m.position.set(Math.cos(u.a) * 1.55, u.y + Math.sin(t * 1.2 + k * 2) * .12, Math.sin(u.a) * 1.15);
-      m.rotation.set(Math.sin(t * .8 + k) * .15, Math.sin(t * .6 + k) * .45 - world.rotation.y, Math.sin(t * .7 + k) * .08);
+      u.pop = Math.max(0, u.pop - dt * .7);
+      var p = Math.sin(u.pop * Math.PI);
+      m.position.set(Math.cos(u.a) * 1.55 * (1 - p * .45), u.y + Math.sin(t * 1.2 + k * 2) * .12 + p * .2, Math.sin(u.a) * 1.15 + p * .9);
+      m.scale.setScalar(u.base * (1 + p * .35));
+      m.rotation.set(Math.sin(t * .8 + k) * .15, Math.sin(t * .6 + k) * .45 - world.rotation.y + (1 - u.pop) * (u.pop > 0 ? Math.PI * 2 : 0), Math.sin(t * .7 + k) * .08);
     });
     root.rotation.y = t * .25;
-    world.rotation.y += (ptr.x * .45 - world.rotation.y) * .04;
-    world.rotation.x += (ptr.y * .12 - world.rotation.x) * .05;
+    world.rotation.y += (ptr.x * .3 + spin - world.rotation.y) * .08;
+    world.rotation.x += (ptr.y * .1 + tilt - world.rotation.x) * .06;
     renderer.render(scene, cam);
     requestAnimationFrame(loop);
   }
@@ -424,6 +497,7 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
           });
         });
       })(n);
+      chain.catch(function () {});
     }).catch(function () {
       if (viewer.hidden) return;
       countEl.textContent = '';
