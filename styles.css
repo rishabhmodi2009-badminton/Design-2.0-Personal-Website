@@ -164,6 +164,14 @@ a.qcard:hover { border-color: var(--ink); transform: translateY(-5px); }
 .doc p { font-size: 14px; color: var(--mut); margin-top: 5px; line-height: 1.45; }
 .doc .meta { display: flex; gap: 10px; align-items: center; margin-top: 10px; font-size: 12.5px; font-weight: 800; color: var(--dim); }
 .doc .meta .go { margin-left: auto; color: var(--green); }
+.doc .meta .soon { margin-left: auto; color: var(--dim); }
+.doc.soon { cursor: default; }
+.doc.soon:hover { transform: none; box-shadow: var(--shadow); }
+.docs { background: var(--paper3); }
+.crumb { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 14px; color: var(--mut); margin-bottom: 14px; }
+.crumb a:hover { color: var(--c); }
+.visual .stage { inset: 0; }
+.visual .hint { position: absolute; z-index: 4; left: 50%; bottom: 0; transform: translateX(-50%); font-size: 12.5px; font-weight: 800; color: var(--c); background: rgba(255,253,248,.85); padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
 @media (max-width: 1000px) { .q-grid, .doc-grid { grid-template-columns: 1fr 1fr; } .lab .wrap { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .q-grid, .doc-grid { grid-template-columns: 1fr; } }
 
