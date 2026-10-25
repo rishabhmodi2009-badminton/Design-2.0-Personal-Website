@@ -330,3 +330,23 @@ a.qcard:hover { border-color: var(--ink); transform: translateY(-5px); }
 .aw-links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-top: 12px; }
 .aw-links span { font-weight: 800; font-size: 14px; color: var(--mut); }
 .aw-links .aw-link { margin-top: 0; }
+
+/* home: research teaser */
+.rh-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 22px; align-items: stretch; }
+.rh-now { display: flex; flex-direction: column; padding: 32px 30px 28px; border-radius: var(--r); background: var(--coffee); color: #dcc9b5; position: relative; overflow: hidden; transition: transform .5s var(--spring); }
+.rh-now:hover { transform: translateY(-6px) rotate(-.5deg); }
+.rh-now h3 { color: #fff; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1; margin-bottom: 12px; }
+.rh-now p { font-size: 16px; }
+.rh-now ol { list-style: none; display: grid; gap: 10px; margin: 22px 0 24px; padding-left: 18px; border-left: 3px dashed rgba(243,234,219,.25); }
+.rh-now li { position: relative; font-weight: 700; font-size: 15px; }
+.rh-now li::before { content: ""; position: absolute; left: -26px; top: 6px; width: 13px; height: 13px; border-radius: 50%; background: #BFD9A8; box-shadow: 0 0 0 4px var(--coffee); }
+.rh-now li b { display: inline-block; min-width: 46px; color: var(--sun); font-weight: 800; }
+.rh-now .go { margin-top: auto; font-weight: 800; color: #BFD9A8; }
+.rh-list { display: grid; gap: 14px; }
+.rh-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6px 16px; padding: 20px 24px; border-radius: var(--r2); background: var(--card); box-shadow: var(--shadow); border: 2px solid transparent; transition: border-color .3s, transform .45s var(--spring); }
+.rh-item:hover { border-color: var(--ink); transform: translateX(6px); }
+.rh-item .pill { grid-column: 1; justify-self: start; font-size: 12px; padding: 4px 12px; }
+.rh-item b { grid-column: 1; font-family: var(--hd); font-weight: 800; font-size: 20px; line-height: 1.2; letter-spacing: -.01em; }
+.rh-item i { grid-column: 2; grid-row: 1 / 3; font-style: normal; font-weight: 800; font-size: 22px; color: var(--green); transition: transform .4s var(--spring); }
+.rh-item:hover i { transform: translateX(4px); }
+@media (max-width: 1000px) { .rh-grid { grid-template-columns: 1fr; } }
