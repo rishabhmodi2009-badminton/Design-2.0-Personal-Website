@@ -327,8 +327,6 @@ a.qcard:hover { border-color: var(--ink); transform: translateY(-5px); }
 .scene-cap a { font-weight: 800; font-size: 14px; color: var(--green); border-bottom: 2px solid currentColor; }
 .aw-note { margin-top: 4px; font-weight: 700; }
 .aw-note a { color: var(--green); border-bottom: 2px solid currentColor; }
-.edu-docs { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 20px; padding-top: 18px; border-top: 2px dashed var(--line2); }
-.edu-docs a { font-weight: 800; font-size: 15px; color: var(--green); border-bottom: 2px solid currentColor; }
 .aw-links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-top: 12px; }
 .aw-links span { font-weight: 800; font-size: 14px; color: var(--mut); }
 .aw-links .aw-link { margin-top: 0; }
