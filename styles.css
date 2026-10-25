@@ -351,3 +351,4 @@ a.qcard:hover { border-color: var(--ink); transform: translateY(-5px); }
 .rh-item:hover i { transform: translateX(4px); }
 @media (max-width: 1000px) { .rh-grid { grid-template-columns: 1fr; } }
 .log-btn { margin-top: 28px; }
+.res-card b.long { font-size: clamp(40px, 3.6vw, 54px); white-space: nowrap; }
