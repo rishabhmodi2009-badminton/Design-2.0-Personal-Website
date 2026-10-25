@@ -17,7 +17,7 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
       var el = en.target, to = +el.getAttribute('data-count'), t0 = performance.now();
       (function tick(t) {
         var k = Math.min(1, (t - t0) / 1400);
-        el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))) + (el.getAttribute('data-suffix') || '');
+        el.textContent = (el.getAttribute('data-prefix') || '') + Math.round(to * (1 - Math.pow(1 - k, 3))).toLocaleString('en-US') + (el.getAttribute('data-suffix') || '');
         if (k < 1) requestAnimationFrame(tick);
       })(t0);
     });
