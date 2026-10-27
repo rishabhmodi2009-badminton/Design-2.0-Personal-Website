@@ -4,159 +4,315 @@
 <meta charset="utf-8">
 <title>Rishabh Modi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Rishabh Modi — student builder in Singapore. EcoBean, Project Wish, Code For All, and cricket coaching.">
+<meta name="description" content="Rishabh Modi, a senior at Singapore American School. EcoBean, Project Wish, LaunchLab, Code For All, and a coffee-ground fertilizer experiment.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Caveat:wght@500..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="bar">
+<header class="top">
   <div class="wrap">
-    <a class="logo" href="index.html" aria-label="Rishabh Modi, home"><svg class="sprout" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 29V15" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z" fill="currentColor"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z" fill="currentColor" opacity=".72"/></svg><span>Rishabh Modi</span></a>
+    <a class="name" href="#">Rishabh Modi</a>
     <nav aria-label="Main">
-      <a href="index.html" class="on">Home</a>
-      <a href="work.html"><span class="nav-full">Entrepreneurship &amp; Leadership</span><span class="nav-short">Leadership</span></a>
-      <a href="research.html">Research</a>
-      <a href="resume.html">Résumé</a>
+      <a href="#work">Work</a>
+      <a href="#lab">Research</a>
+      <a class="keep" href="resume.html">Résumé</a>
+      <a class="keep" href="#hi">Say hi</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-  <section class="hero grain">
+  <section class="hero">
     <div class="wrap">
       <div>
-        <div class="tags rv"><span class="pill g">Class of 2027</span><span class="pill t">Singapore American School</span><span class="pill c">Founder</span><span class="pill s">Entrepreneur</span><span class="pill k">Badminton player</span></div>
-        <h1 aria-label="I turn small ideas into things that grow."><span class="word" style="animation-delay:.05s">I</span> <span class="word" style="animation-delay:.12s">turn</span> <span class="word" style="animation-delay:.19s">small</span> <span class="word" style="animation-delay:.26s">ideas</span> <span class="word" style="animation-delay:.33s">into</span> <span class="word" style="animation-delay:.4s">things</span> <span class="word" style="animation-delay:.47s">that</span> <span class="word grow" style="animation-delay:.6s">grow.<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 50 4, 120 4, 197 12"/></svg></span></h1>
-        <p class="lead rv d2">Hi, I'm Rishabh, a senior at Singapore American School. A few of the things that have grown so far: a plant kit made from old cans and coffee grounds, a club supporting charities that grant wishes to critically and terminally ill patients, a vibe-coding workshop for 100+ master's students at ESSEC Business School, and a sunlight-to-circuit activity for Science Centre Singapore's observatory. Off the desk, you’ll usually find me on the badminton court.</p>
+        <span class="hand hi">hey, I'm</span>
+        <h1><span>Rishabh</span><span>Modi.</span></h1>
+        <p class="line">I start small things and <span class="circled">keep showing up<svg viewBox="0 0 200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M12 30C8 14 60 4 112 5c52 1 86 9 82 24-4 14-62 19-110 17C38 44 4 38 14 22"/></svg></span> until they grow.</p>
+        <p class="meta">Senior at Singapore American School, Class of 2027 · co-founder of EcoBean and Project Wish · badminton player · Singapore</p>
       </div>
-      <div class="orb rv d2">
-        <div class="ring"></div>
-        <div class="stage" data-scene="kit" aria-label="3D scene: the EcoBean kit, a recycled can growing a sprout, with a badminton shuttlecock, an AI chip, and a Project Wish heart orbiting it">
-          <div class="fallback"><svg class="sprout" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 29V15" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z" fill="currentColor"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z" fill="currentColor" opacity=".72"/></svg></div>
+      <div class="pile" data-photos>
+        <span class="hand note">Celebration of<br>Service, 2026</span>
+        <figure class="snap p1"><img src="images/photos/wish-award.webp" width="2000" height="1122" style="--ar:16/9" alt="Receiving the New Service Club Award on stage at SAS's Celebration of Service 2026"><figcaption>New Service Club Award</figcaption></figure>
+        <figure class="snap p2"><img src="images/photos/ecobean-pitch.webp" width="1920" height="1440" alt="Pitching the EcoBean growing kit on stage at the JA Company of the Year Competition"><figcaption>Pitching EcoBean, JA nationals</figcaption></figure>
+        <figure class="snap p3"><img src="images/photos/badminton.jpg" width="1400" height="1050" alt="The SAS badminton team with coaches in the school gym"><figcaption>the badminton team</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <nav class="toc wrap" aria-label="Contents">
+    <ol>
+      <li class="start">start →</li>
+      <li><a href="#now"><b>01</b>Right now</a></li>
+      <li><a href="#ecobean"><b>02</b>EcoBean</a></li>
+      <li><a href="#wish"><b>03</b>Project Wish</a></li>
+      <li><a href="#launchlab"><b>04</b>LaunchLab</a></li>
+      <li><a href="#cfa"><b>05</b>Code For All</a></li>
+      <li><a href="#lab"><b>06</b>Coffee lab</a></li>
+      <li><a href="#writing"><b>07</b>Writing</a></li>
+      <li><a href="#also"><b>08</b>Also</a></li>
+      <li><a href="#resume"><b>09</b>Résumé</a></li>
+    </ol>
+  </nav>
+
+  <section class="ch" id="now">
+    <div class="wrap">
+      <div class="ch-head rv"><span class="num">01</span><h2><span class="hl">Right now</span></h2><span class="hand aside">fall 2026</span></div>
+      <ul class="now rv">
+        <li><i></i><div><b>Senior at Singapore American School</b><span>Class of 2027 · GPA 4.29 · seven 5s on AP exams</span></div></li>
+        <li><i></i><div><b>Running Project Wish</b><span>A service club for two wish-granting charities</span></div></li>
+        <li><i></i><div><b>Teaching vibe coding with LaunchLab</b><span>After 100+ master's students at ESSEC, now new audiences</span></div></li>
+        <li><i></i><div><b>Gold CREST Award project</b><span>Why coffee grounds help plants grow, with chemistry</span></div></li>
+        <li><i></i><div><b>Co-president of Code For All</b><span>Building a 10-week AI and vibe-coding curriculum</span></div></li>
+        <li><i></i><div><b>Officer, Entrepreneurship Club</b><span>Mentoring the next Junior Achievement teams</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ch" id="ecobean">
+    <span id="work"></span>
+    <div class="wrap">
+      <div class="ch-head rv"><span class="num">02</span><h2><span class="hl">EcoBean</span></h2><span class="hand aside">co-founder &amp; CEO, 2025–26</span></div>
+      <div class="read rv">
+        <p class="lede">A plant-growing kit made from recycled cans, cardboard, and newspaper, fed with a fertilizer we brewed from used coffee grounds. We built it so elementary and middle schoolers could turn what they learn about climate change into something they can actually grow.</p>
+        <p>I led a 30-person team across marketing, finance, HR/PR, and production. The fertilizer took rounds of testing to get right, and the box went through a last-week rebuild in the Robotics Lab: laser-cut wood with a 3D-printed water tray. We also ran climate and entrepreneurship workshops for a Girl Scouts troop and an elementary school.</p>
+        <p>At the Junior Achievement Singapore finals on 24 January 2026, we placed <strong>3rd in the country</strong>, judged on our finances, an investor interview, our trade fair booth, and a final report. It was our school's first top-three finish in six years.</p>
+      </div>
+      <div class="facts rv">
+        <div><b>3rd</b>in Singapore</div>
+        <div><b>27</b>kits sold</div>
+        <div><b>$540</b>in sales</div>
+        <div><b>30</b>teammates</div>
+      </div>
+      <div class="links rv">
+        <a class="lnk" href="docs/ecobean-final-report.pdf" data-doc="EcoBean Final Report">Read our final report →</a>
+        <a class="lnk" href="https://ecobean.org/" target="_blank" rel="noopener">ecobean.org ↗</a>
+      </div>
+      <div class="spread" data-photos>
+        <figure class="snap c7 rv"><img src="images/photos/ecobean-pitch.webp" width="1920" height="1440" loading="lazy" alt="The EcoBean team presenting the growing kit on stage at the JA Company of the Year Competition"><figcaption>the final pitch, on stage</figcaption></figure>
+        <figure class="snap c5 rv"><img src="images/photos/ecobean-team.webp" width="1170" height="1560" loading="lazy" style="--ar:3/4" alt="Rishabh, Melvin Lee, Mia Bohra, and Hongjun Kim holding their JA certificates and the 3rd place trophy"><figcaption>3rd in Singapore!</figcaption></figure>
+        <figure class="snap c4 rv"><img src="images/photos/ecobean-prototypes.webp" width="850" height="630" loading="lazy" alt="A blue 3D-printed planter beside the laser-cut wooden EcoBean box"><figcaption>prototype vs. final box</figcaption></figure>
+        <figure class="snap c4 rv"><img src="images/photos/ecobean-assembly.webp" width="1226" height="912" loading="lazy" alt="Team members wrapping recycled cans in newspaper around a table"><figcaption>wrapping cans in newspaper</figcaption></figure>
+        <figure class="snap c4 rv"><img src="images/photos/ecobean-interview.webp" width="1920" height="1440" loading="lazy" alt="The EcoBean team answering questions from three judges in a meeting room"><figcaption>the investor interview</figcaption></figure>
+        <figure class="snap c4 down rv"><img src="images/photos/ecobean-tradefair.webp" width="604" height="788" loading="lazy" style="--ar:3/4" alt="Families visiting the EcoBean trade fair booth"><figcaption>trade fair booth</figcaption></figure>
+        <figure class="snap c4 rv"><img src="images/photos/ecobean-girlscouts.webp" width="1152" height="1536" loading="lazy" style="--ar:3/4" alt="Girl Scouts holding an EcoBean kit and sticker with the team"><figcaption>Girl Scouts workshop</figcaption></figure>
+        <figure class="snap c4 down rv"><img src="images/photos/ecobean-workshop.webp" width="1152" height="1536" loading="lazy" style="--ar:3/4" alt="Rishabh explaining the kit to Girl Scouts seated around a table"><figcaption>explaining how the kit works</figcaption></figure>
+        <figure class="snap c8 mid rv"><img src="images/photos/ecobean-stage.webp" width="1920" height="1440" loading="lazy" alt="The EcoBean team with judges on stage under the JA Company of the Year screen, 24 January 2026"><figcaption>with the judges, 24 Jan 2026</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="ch" id="wish">
+    <div class="wrap">
+      <div class="ch-head rv"><span class="num">03</span><h2><span class="hl">Project Wish</span></h2><span class="hand aside">co-founder &amp; president</span></div>
+      <div class="split">
+        <div class="rv">
+          <p class="lede">It started with me putting up fundraiser posters around Robertson Quay in 2024. Now it's a school service club supporting two charities that grant wishes to seriously ill patients.</p>
+          <p>I started Project Wish to show students that small actions can make a huge difference in someone's life. We were one of only three new clubs approved out of 50+ competitive applications. I lead every club meeting, planned the school's first social media fundraiser, and direct service opportunities for 30+ members.</p>
+          <div class="pair">
+            <div><small>Make-A-Wish Singapore</small><b>Critically ill children</b></div>
+            <div><small>Ambulance Wish Singapore</small><b>Terminally ill adults</b></div>
+          </div>
+          <p style="margin-top:18px">In 2026 the club received the <span class="hl">New Service Club Award</span> from the SAS Eagle Service Council.</p>
         </div>
-        <span class="hint">Tap to spin ↻</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec results dash-top">
-    <div class="wrap">
-      <div class="grid">
-        <div class="res-card c-green rv"><i></i><b>3<sup>rd</sup></b><p>in Singapore Junior Achievement Company of the Year Competition</p></div>
-        <div class="res-card c-terra rv d1"><i></i><b data-count="7">7</b><p>automations built for Ambulance Wish Singapore, saving the team 3 hours a week</p></div>
-        <div class="res-card c-teal rv d2"><i></i><b class="long" data-count="1500" data-prefix="$" data-suffix="+">$1,500+</b><p>earned through my condo delivery and cricket coaching businesses</p></div>
-        <div class="res-card c-coffee rv d3"><i></i><b data-count="100" data-suffix="+">100+</b><p>master's students taught vibe coding at ESSEC Business School</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec work" style="padding-top:0">
-    <div class="wrap">
-      <div class="head">
-        <div><span class="kick rv">Projects</span><h2 class="h2 rv d1">Things I've started</h2></div>
-        <p class="lead rv d2" style="max-width:40ch">Small ideas that kept growing. <a href="work.html" style="color:var(--green);font-weight:800">See all projects →</a></p>
-      </div>
-      <div class="grid">
-        <article class="pcard rv">
-          <div class="ph" style="background:var(--sage);color:var(--green)"><span class="pill g">Co-founder &amp; CEO · 2025–26</span><img class="logo" src="images/ecobean-logo.png" alt="EcoBean logo: a sprout in a pot, From Beans to Greens"></div>
-          <div class="bd">
-            <h3>EcoBean</h3>
-            <p>A beginner-friendly plant kit made from recycled cans and newspaper, with natural fertilizer from used coffee grounds. We also ran youth workshops with an elementary school and the Girl Scouts.</p>
-            <div class="stat" style="color:var(--green)">27 kits sold · $540 · 3rd in Singapore Junior Achievement Company of the Year Competition</div>
-            <a class="btn sm" href="work.html#ecobean">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </article>
-        <article class="pcard rv d1">
-          <div class="ph" style="background:var(--peach);color:var(--terra)"><span class="pill t">Co-founder &amp; president · 2025–</span><img class="badge" src="images/project-wish-logo.jpg" alt="Project Wish logo with a shooting star"></div>
-          <div class="bd">
-            <h3>Project Wish</h3>
-            <p>A service club supporting two wish-granting charities: <strong>Make-A-Wish Singapore</strong> for <strong>critically ill children</strong>, and <strong>Ambulance Wish Singapore</strong> for <strong>terminally ill adults</strong>. One of only three clubs approved from <strong>50+</strong> applications.</p>
-            <div class="stat" style="color:var(--terra)">Outstanding New Service Club Award, 2026</div>
-            <a class="btn sm t" href="work.html#wish">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </article>
-        <article class="pcard rv d2">
-          <div class="ph" style="background:var(--sky);color:var(--teal)"><span class="pill c">First-ever student intern · Jun 2026</span><img class="badge" src="images/ambulance-wish-logo.png" alt="Ambulance Wish Singapore logo"></div>
-          <div class="bd">
-            <h3>Ambulance Wish Singapore</h3>
-            <p>I was the charity's <strong>first-ever student intern</strong> and its <strong>first volunteer under 18</strong>. Over four weeks at the charity, I built automations that flag outstanding wish reports, saving important time for a team of just two that runs the charity’s entire Programmes branch.</p>
-            <div class="stat" style="color:var(--teal)">7 automations · 3 hours saved a week</div>
-            <a class="btn sm c" href="resume.html#experience">See the details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec research-home" style="padding-top:0">
-    <div class="wrap">
-      <div class="head">
-        <div><span class="kick rv">Research</span><h2 class="h2 rv d1">Questions I keep chasing</h2></div>
-        <p class="lead rv d2"><a href="research.html" style="color:var(--green);font-weight:800">See all research →</a></p>
-      </div>
-      <div class="rh-grid">
-        <a class="rh-now rv" href="research.html">
-          <span class="kick" style="color:#BFD9A8">Now researching</span>
-          <h3>Why do coffee grounds help plants grow?</h3>
-          <p>EcoBean's coffee-ground fertilizer worked in testing. Now I'm explaining why, with chemistry, as a Gold CREST Award project.</p>
-          <ol>
-            <li><b>2025</b>EcoBean's first growth test</li>
-            <li><b>2026</b>AP Chemistry final</li>
-            <li><b>Now</b>Gold CREST Award project</li>
-          </ol>
-          <span class="go">Read about it →</span>
-        </a>
-        <div class="rh-list">
-          <a class="rh-item rv d1" href="docs/cashless-society-essay.pdf" data-doc="Should we fear a cashless society?"><span class="pill t">John Locke Institute · Commendation</span><b>Should we fear a cashless society?</b><i>→</i></a>
-          <a class="rh-item rv d1" href="docs/price-anchoring-paper.pdf" data-doc="Demystifying Price Anchors"><span class="pill g">AT Psychology · 2025</span><b>Why do price tags trick us?</b><i>→</i></a>
-          <a class="rh-item rv d2" href="docs/ai-bias-project.pdf" data-doc="How do biases get into AI?"><span class="pill c">AT Psychology · 2026</span><b>How do biases get into AI?</b><i>→</i></a>
-          <a class="rh-item rv d2" href="docs/ai-cooling-article.pdf" data-doc="Can AI save more energy than it consumes?"><span class="pill s">Science Centre Singapore · 2026</span><b>Can AI save more energy than it consumes?</b><i>→</i></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" style="padding-top:0">
-    <div class="wrap">
-      <div class="band rv">
-        <svg class="leaf" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z"/></svg>
-        <div><h2>Let's grow something together.</h2><p>Happy to talk about entrepreneurship, sustainability, service projects, or AI.</p></div>
-        <div class="links">
-          <a class="btn w" href="mailto:rishabh.modi.2009@icloud.com">Email me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="ghost" href="https://www.linkedin.com/in/rishabh-modi-2b0b06307/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <div class="rv" data-photos>
+          <figure class="snap" style="--r:2deg"><img src="images/photos/wish-plaque.jpg" width="900" height="1200" loading="lazy" style="--ar:4/5" alt="The New Service Clubs Umbrella Award 2026 plaque with the SAS eagle"><figcaption>the plaque!</figcaption></figure>
         </div>
       </div>
+      <div class="spread" data-photos>
+        <figure class="snap c7 rv"><img src="images/photos/wish-award.webp" width="2000" height="1122" loading="lazy" style="--ar:16/9" alt="Receiving the New Service Club Award on stage at the Executive Service Council Celebration of Service 2026"><figcaption>Celebration of Service 2026</figcaption></figure>
+        <figure class="snap c5 down rv"><img src="images/photos/wish-assembly.webp" width="1934" height="1278" loading="lazy" style="--ar:3/2" alt="Standing up at the Honors assembly as the Outstanding Volunteerism and Service Awards are read out"><figcaption>called up at the honors assembly</figcaption></figure>
+      </div>
+
+      <div class="split" style="margin-top:72px" id="aws">
+        <div class="rv">
+          <h3 style="font-size:30px">Ambulance Wish Singapore</h3>
+          <p class="mono" style="margin:6px 0 14px">Summer intern · June 2026 · 4 weeks</p>
+          <p>Project Wish led to a summer internship with one of our partner charities. I was its <strong>first-ever student intern</strong> and its first volunteer under 18.</p>
+          <ul class="ticks">
+            <li>Learned Power Automate from scratch and built 7 automations that flag outstanding wish reports, forms, and group chat closures, saving a two-person team about 3 hours a week.</li>
+            <li>Joined two wish trips and trialled bringing a student photographer, opening a path to direct service for Project Wish members.</li>
+            <li>Wrote and designed the AMBY Blind Bag social media campaign end to end.</li>
+            <li>Researched 18+ cake sponsors for Cakes for a Cause and 39 potential sponsors for the charity golf event.</li>
+          </ul>
+        </div>
+        <div class="rv" data-photos>
+          <figure class="snap" style="--r:-2deg"><img src="images/photos/aws-wish.jpg" width="1024" height="768" loading="lazy" alt="Rishabh in an Ambulance Wish Singapore shirt with a fellow volunteer"><figcaption>in the Ambulance Wish blue</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ch" id="launchlab">
+    <div class="wrap">
+      <div class="ch-head rv"><span class="num">04</span><h2><span class="hl">LaunchLab</span></h2><span class="hand aside">co-founder, Sep 2026</span></div>
+      <div class="read rv">
+        <p class="lede">Hands-on presentations on vibe coding: building real apps and websites with AI tools, from Claude to Vercel.</p>
+        <p>With Yibo Yang and Nirvan Anand, I gave two one-hour LaunchLab sessions to <strong>100+ master's students at ESSEC Business School</strong>. Professor Madina Kalyayeva invited us after we met at Junior Achievement Asia Pacific's Youth Beyond Borders networking workshop. Next, we're taking LaunchLab to new schools, adding workflow automation, and bringing in my research on where AI bias comes from.</p>
+      </div>
+      <div class="strip-wrap">
+        <div class="strip" data-photos tabindex="0" aria-label="Photos from the ESSEC presentations">
+          <figure class="snap"><img src="images/launchlab/essec-1.jpg" width="1600" height="1200" loading="lazy" alt="Opening slide: LaunchLab: Claude Design, Claude Code, GitHub, and Vercel"><figcaption>the opening slide</figcaption></figure>
+          <figure class="snap"><img src="images/launchlab/essec-2.jpg" width="1600" height="1200" loading="lazy" alt="Kicking off Part 1 for a room of master's students at ESSEC"><figcaption>kicking off Part 1</figcaption></figure>
+          <figure class="snap"><img src="images/launchlab/essec-3.jpg" width="1600" height="1200" loading="lazy" alt="Explaining what Claude Code is and how agentic coding works"><figcaption>what is agentic coding?</figcaption></figure>
+          <figure class="snap"><img src="images/launchlab/essec-4.jpg" width="1600" height="1200" loading="lazy" alt="Walking through Claude Code for product designers"><figcaption>Claude Code for designers</figcaption></figure>
+          <figure class="snap"><img src="images/launchlab/essec-5.jpg" width="1200" height="1600" loading="lazy" alt="The art of prompting: writing a clear brief for an AI builder"><figcaption>the art of prompting</figcaption></figure>
+          <figure class="snap"><img src="images/launchlab/essec-6.jpg" width="1600" height="1200" loading="lazy" alt="Part 1 summary: design, build, deploy"><figcaption>design → build → deploy</figcaption></figure>
+          <figure class="snap"><img src="images/launchlab/essec-7.jpg" width="1600" height="1200" loading="lazy" alt="Taking students through the whole workflow"><figcaption>the whole workflow</figcaption></figure>
+          <figure class="snap"><img src="images/launchlab/essec-8.jpg" width="1600" height="1200" loading="lazy" alt="Students following along and building on their own laptops"><figcaption>everyone building along</figcaption></figure>
+        </div>
+        <div class="strip-nav"><button type="button" data-strip="-1" aria-label="Previous photos">←</button><button type="button" data-strip="1" aria-label="Next photos">→</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ch" id="cfa">
+    <div class="wrap">
+      <div class="ch-head rv"><span class="num">05</span><h2><span class="hl">Code For All</span></h2><span class="hand aside">co-president, since 2023</span></div>
+      <div class="split">
+        <div class="rv">
+          <p class="lede">An international service project that teaches underprivileged children to code, hosts workshops, and repairs old laptops to donate.</p>
+          <p>I joined without knowing how to code and stayed because I believed in the mission. As co-president, I've used that outside view to grow the club beyond pure coding.</p>
+          <ul class="ticks">
+            <li>Led development of a 10-week AI and vibe-coding curriculum, now being confirmed for use. This AI work laid the foundation for LaunchLab.</li>
+            <li>Overseeing Stick 'Em, which brings robotics and coding together for hands-on lessons with younger students.</li>
+            <li>Led digital literacy presentation development for a service conference hosted by the Jalan Besar Project.</li>
+          </ul>
+        </div>
+        <div class="rv" data-photos style="display:grid;gap:30px">
+          <figure class="snap" style="--r:1.8deg"><img src="images/photos/cfa-team.jpg" width="1024" height="768" loading="lazy" alt="Code For All members holding blue shirts"><figcaption>the team, new shirts in hand</figcaption></figure>
+          <figure class="snap" style="--r:-1.5deg;width:82%;justify-self:end"><img src="images/photos/cfa-selfie.jpg" width="1024" height="768" loading="lazy" alt="A selfie with Code For All members"><figcaption>obligatory selfie</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ch" id="lab">
+    <div class="wrap">
+      <div class="ch-head rv"><span class="num">06</span><h2><span class="hl">Coffee lab</span></h2><span class="hand aside">Gold CREST Award, in progress</span></div>
+      <div class="read rv">
+        <p class="lede">EcoBean's coffee-ground fertilizer seemed to work, but I wanted to know whether it really did, and why. So I ran a controlled experiment at home and logged every day of it.</p>
+        <p>It took three runs. Run 1 grew mold in plastic cups; Run 2's seeds never sprouted. Run 3 used proper pots with drainage, fresh red cabbage seeds, and a third pot with store-bought fertilizer to compare against.</p>
+      </div>
+      <div class="lab rv">
+        <div class="lab-grid">
+          <div>
+            <span class="mono">Question</span>
+            <p class="q">Does a liquid coffee-ground fertilizer raise soil nutrients and help microgreens grow?</p>
+            <div class="pots">
+              <div><b>Pot A</b>Water only (control)</div>
+              <div><b>Pot B</b>Coffee fertilizer on Day 5</div>
+              <div><b>Pot C</b>Store-bought fertilizer (NPK 1-0-4) on Day 5</div>
+            </div>
+            <p style="margin-top:14px;font-size:15px;color:var(--mut)">Same soil, 2 g of seeds and 30 mL of water a day per pot. Soil tested with LaMotte nitrogen, phosphorus, and potassium kits. My parents read the colour tests blind, so I couldn't pick the result I wanted.</p>
+          </div>
+          <div>
+            <span class="mono">Run 3 results</span>
+            <table class="data">
+              <thead><tr><th></th><th>Control</th><th>Coffee</th><th>Store-bought</th></tr></thead>
+              <tbody>
+                <tr><td>Nitrogen, Day 6</td><td>Low–medium</td><td>Medium</td><td class="best">High</td></tr>
+                <tr><td>Phosphorus, Day 6</td><td>Trace</td><td class="best">Low</td><td>Trace</td></tr>
+                <tr><td>Potassium, Day 6</td><td>High (9 drops)</td><td class="best">High (6 drops)</td><td>High (8 drops)</td></tr>
+                <tr><td>Microgreens, Day 8</td><td class="best">~48</td><td>~26</td><td>~32</td></tr>
+                <tr><td>Harvest mass</td><td class="best">5 g</td><td>3 g</td><td>3 g</td></tr>
+              </tbody>
+            </table>
+            <p style="margin-top:8px;font-size:13.5px;color:var(--mut)">Potassium: fewer drops to the endpoint means more potassium.</p>
+          </div>
+        </div>
+        <div class="verdict">
+          <span class="hand">so… the control won?</span>
+          <p>The coffee fertilizer did raise nitrogen, phosphorus, and potassium above the control. But the control still grew the most. It sat in more sunlight until I rotated the pots on Day 5, and an 8-day run may be too short for extra nutrients to show up as growth. That's exactly what the Gold CREST project is for: longer runs, more pots, and the chemistry behind it.</p>
+          <ul class="chem">
+            <li><b>Nutrients</b>Used grounds carry nitrogen, phosphorus, and potassium, plus traces of calcium, magnesium, and iron.</li>
+            <li><b>Gentle pH</b>Brewing pulls most of the acid into the drink, so used grounds sit near neutral (about 6.5–6.8).</li>
+            <li><b>Slow release</b>Soil microbes break the grounds down and release ammonium; as roots absorb it, equilibrium shifts to release more.</li>
+            <li><b>Don't overdo it</b>Caffeine at high concentrations can stop seeds germinating, so the dose matters.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="spread" data-photos>
+        <figure class="snap c4 rv"><img src="images/photos/coffee-spray.jpg" width="900" height="1200" loading="lazy" style="--ar:3/4" alt="Spraying coffee fertilizer onto Pot B on Day 5"><figcaption>Day 5: 5 sprays, 1.2 mL</figcaption></figure>
+        <figure class="snap c4 down rv"><img src="images/photos/coffee-potassium.jpg" width="1200" height="900" loading="lazy" alt="A potassium titration beside the LaMotte EndPoint colour card"><figcaption>potassium: purple → blue</figcaption></figure>
+        <figure class="snap c4 rv"><img src="images/photos/coffee-day8.jpg" width="900" height="1200" loading="lazy" style="--ar:3/4" alt="All three labelled pots of red cabbage microgreens from above on Day 8"><figcaption>Day 8, from above</figcaption></figure>
+        <figure class="snap c4 rv"><img src="images/photos/coffee-nitrogen.jpg" width="1200" height="900" loading="lazy" alt="A pink nitrogen test for the coffee fertilizer pot beside the LaMotte colour chart"><figcaption>nitrogen: medium pink</figcaption></figure>
+        <figure class="snap c4 rv"><img src="images/photos/coffee-day4.jpg" width="1200" height="900" loading="lazy" alt="All three labelled pots on Day 4 with the first sprouts"><figcaption>Day 4: first sprouts</figcaption></figure>
+        <figure class="snap c4 rv"><img src="images/photos/coffee-harvest.jpg" width="1200" height="900" loading="lazy" alt="Harvested microgreens from each pot in three bowls, one on a kitchen scale"><figcaption>harvest day, weighing</figcaption></figure>
+      </div>
+      <div class="links rv">
+        <a class="lnk" href="https://claude.ai/artifact/HRfKq6BjuV439jESHssvnT" target="_blank" rel="noopener">See the full day-by-day log ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ch" id="writing">
+    <div class="wrap">
+      <div class="ch-head rv"><span class="num">07</span><h2><span class="hl">Writing</span></h2><span class="hand aside">questions I keep chasing</span></div>
+      <ul class="papers rv">
+        <li><a href="docs/cashless-society-essay.pdf" data-doc="Should we fear a cashless society?"><span class="mono">John Locke Institute · 2026</span><div><b>Should we fear a cashless society?</b><p>Economics essay, Commendation in the Global Essay Prize. A fully cashless society is worth fearing for privacy, access, and resilience, but the move to digital payments should continue.</p></div><span class="go">read →</span></a></li>
+        <li><a href="docs/price-anchoring-paper.pdf" data-doc="Demystifying Price Anchors"><span class="mono">AT Psychology · 2025</span><div><b>Why do price tags trick us?</b><p>A survey experiment with SAS students and teachers: random price anchors swayed both groups' willingness to pay, and experience barely helped the adults.</p></div><span class="go">read →</span></a></li>
+        <li><a href="docs/ai-bias-project.pdf" data-doc="How do biases get into AI?"><span class="mono">AT Psychology · 2026</span><div><b>How do biases get into AI?</b><p>An infographic on where AI bias forms and how it can be reduced. It led to an invitation to speak at SAS's Human+ conference in early 2027.</p></div><span class="go">view →</span></a></li>
+        <li><a href="docs/ai-cooling-article.pdf" data-doc="Can AI save more energy than it consumes?"><span class="mono">Science Centre · 2026</span><div><b>Can AI save more energy than it consumes?</b><p>How Singapore is using AI to cut air-conditioning demand. Submitted to Science Centre Singapore's <em>Void Deck</em> magazine.</p></div><span class="go">read →</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ch" id="also">
+    <div class="wrap">
+      <div class="ch-head rv"><span class="num">08</span><h2><span class="hl">Also</span></h2><span class="hand aside">the rest of the notebook</span></div>
+      <div class="split">
+        <div class="also rv" style="grid-template-columns:1fr">
+          <div><h3>Entrepreneurship Club</h3><span class="mono">Officer · Apr 2026 – Present</span><p>Led a partnership with the Grade 6 "Shark Tank" unit, coaching students through ideation and pitching, and helped emcee the final for 8 finalists. Bringing in the Conrad and Diamond Challenges.</p></div>
+          <div><h3>Science Centre Singapore</h3><span class="mono">Volunteer · Jan 2026 – Present</span><p>Help run observatory sessions and designed a sunlight-to-circuit activity for them. Shared the Centre's sustainability work at Yue Hua Green Day.</p></div>
+          <div><h3>Cricket coaching</h3><span class="mono">Founder · Jun 2023 – Present</span><p>A coaching service for kids in my condo, with a structured curriculum that prepares them for club-level competitions.</p></div>
+          <div><h3>Grocery delivery</h3><span class="mono">Founder · Jun – Aug 2022</span><p>Delivered groceries for working parents in my building and earned $300+. The first thing I ever started.</p></div>
+        </div>
+        <div class="rv" data-photos>
+          <figure class="snap" style="--r:-2deg"><img src="images/photos/badminton.jpg" width="1400" height="1050" loading="lazy" alt="The SAS badminton team with two coaches in the school gym"><figcaption>off the desk: SAS badminton</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ch" id="resume">
+    <div class="wrap">
+      <div class="ch-head rv"><span class="num">09</span><h2><span class="hl">Résumé</span></h2></div>
+      <ol class="track rv">
+        <li><span class="mono">Expected May 2027</span><b>Singapore American School</b> <span>· GPA 4.29, seven AP 5s</span></li>
+        <li><span class="mono">Oct 2026</span><b>John Locke Institute Global Essay Prize</b> <span>· Commendation, Economics</span></li>
+        <li><span class="mono">Sep 2026 – Present</span><b>LaunchLab</b> <span>· Co-founder</span></li>
+        <li><span class="mono">Jun 2026</span><b>Ambulance Wish Singapore</b> <span>· First student intern</span></li>
+        <li><span class="mono">Apr 2026</span><b>New Service Club Award</b> <span>· SAS Eagle Service Council</span></li>
+        <li><span class="mono">Jan 2026</span><b>3rd Place, JA Company of the Year</b> <span>· Junior Achievement Singapore</span></li>
+        <li><span class="mono">Aug 2025 – Present</span><b>Project Wish</b> <span>· Co-founder &amp; President</span></li>
+        <li><span class="mono">Aug 2023 – Present</span><b>Code For All</b> <span>· Co-president</span></li>
+        <li class="end"><a class="lnk" href="resume.html" style="font-family:var(--bd);font-size:17px;font-weight:600">the full résumé →</a></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="wrap hi-box" id="hi">
+    <div class="rv">
+      <span class="hand" style="font-size:28px">say hi</span>
+      <h2>Let's grow something.</h2>
+      <p>Happy to talk about entrepreneurship, service projects, sustainability, or AI.</p>
+    </div>
+    <div class="links rv">
+      <a class="btn" href="mailto:rishabh.modi.2009@icloud.com">Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/rishabh-modi-2b0b06307/" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </section>
 
 </main>
 
 <footer class="foot">
-  <span class="mark">grow.</span>
-  <div class="wrap">
-    <div class="top">
-      <div>
-        <a class="logo" href="index.html"><svg class="sprout" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 29V15" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16 17C16 10 11 6 4 6c0 7 5 11 12 11z" fill="currentColor"/><path d="M16 14c0-5.5 4-9 10-9 0 5.5-4 9-10 9z" fill="currentColor" opacity=".72"/></svg>Rishabh Modi</a>
-        <p>Student builder in Singapore, turning small ideas into things that grow.</p>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <ul><li><a href="work.html">Entrepreneurship &amp; Leadership</a></li><li><a href="research.html">Research</a></li><li><a href="resume.html">Résumé</a></li></ul>
-      </div>
-      <div>
-        <h4>Say hello</h4>
-        <ul><li><a href="mailto:rishabh.modi.2009@icloud.com">Email</a></li><li><a href="https://www.linkedin.com/in/rishabh-modi-2b0b06307/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
-      </div>
-    </div>
-    <div class="bot"><span>© <span data-year>2026</span> Rishabh Modi · Singapore</span><a href="#">Back to top ↑</a></div>
-  </div>
+  <div class="wrap"><span>© <span data-year>2026</span> Rishabh Modi · Singapore</span><a href="#">Back to the top ↑</a></div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
