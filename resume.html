@@ -7,42 +7,52 @@
 <meta name="description" content="Rishabh Modi's résumé — education, honors, leadership, experience, programs, service, skills, and languages.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Caveat:wght@500..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="name" href="index.html">Rishabh Modi</a>
+    <a class="name" href="index.html"><svg class="leafmark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C5 10 10 5 20 4c0 10-5 15-14 15z" fill="currentColor"/><path d="M5.5 18.5L14 10" stroke="#F3F0E6" stroke-width="1.4" stroke-linecap="round"/></svg>Rishabh Modi</a>
     <nav aria-label="Main">
-      <a href="index.html#work">Work</a>
-      <a href="index.html#lab">Research</a>
-      <a class="keep on" href="resume.html">Résumé</a>
-      <a class="keep" href="index.html#hi">Say hi</a>
+      <a href="index.html">Home</a>
+      <a href="work.html"><span class="nav-full">Entrepreneurship &amp; Leadership</span><span class="nav-short">Leadership</span></a>
+      <a href="research.html">Research</a>
+      <a href="resume.html" class="on">Résumé</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-  <section class="r-hero">
+  <section class="intro solo" style="padding-bottom:40px">
     <div class="wrap">
-      <span class="hand">the whole story</span>
-      <h1>Résumé</h1>
-      <p>Singapore · <a class="lnk" href="mailto:rishabh.modi.2009@icloud.com">rishabh.modi.2009@icloud.com</a> · <a class="lnk" href="https://www.linkedin.com/in/rishabh-modi-2b0b06307/" target="_blank" rel="noopener">LinkedIn ↗</a></p>
+      <div>
+        <p class="where label">Résumé</p>
+        <h1>The whole story, <em>on one page.</em></h1>
+        <p class="lede">Singapore · <a class="lnk" href="mailto:rishabh.modi.2009@icloud.com">rishabh.modi.2009@icloud.com</a> · <a class="lnk" href="https://www.linkedin.com/in/rishabh-modi-2b0b06307/" target="_blank" rel="noopener">LinkedIn ↗</a></p>
+        <div class="mode" role="group" aria-label="Résumé view"><button type="button" data-mode="text" aria-pressed="true">Text</button><button type="button" data-mode="tree" aria-pressed="false">3D tree</button></div>
+      </div>
     </div>
   </section>
 
-  <section style="padding:24px 0 64px">
-    <div class="wrap">
-
+  <section class="wrap" style="padding-bottom:80px">
+    <div class="tree" id="tree" hidden>
+      <div class="tree-stage"><div class="tree-tip" hidden></div><span class="tree-hint">Drag to turn · click a leaf</span></div>
+      <aside class="tree-panel" aria-live="polite">
+        <div><p class="label">How to read it</p><p class="mut" style="font-size:14.5px;margin-top:6px">Education is the root. Each branch is one part of my résumé, and each leaf is one entry. Click a leaf, or pick a branch below.</p></div>
+        <div class="tree-legend"></div>
+        <div class="tree-card" hidden></div>
+      </aside>
+    </div>
+    <div id="r-text">
       <div class="r-sec" id="education">
-        <span class="kick rv" style="color:var(--green)">Education</span>
+        <span class="kick rv">Education</span>
         <div class="edu rv d1">
           <div class="edu-head"><h3>Singapore American School</h3><span class="when">Expected May 2027</span></div>
           <div class="gpa">High School Diploma · Cumulative GPA 4.29</div>
-          <div style="font-weight:800;font-size:14px;color:var(--mut)">AP scores of 5</div>
+          <div class="label">AP scores of 5</div>
           <div class="aps">
             <span class="pill">Macroeconomics</span><span class="pill">Microeconomics</span><span class="pill">Physics 1</span><span class="pill">Chemistry</span><span class="pill">Calculus BC</span><span class="pill">Physics C: Mechanics</span><span class="pill">Physics C: E&amp;M</span>
           </div>
@@ -53,22 +63,22 @@
         <span class="kick rv">Honors &amp; Awards</span>
         <div>
           <div class="aw-grid">
-            <div class="aw rv"><span class="yr">Oct 2026</span><div class="md" style="background:var(--teal)">JL</div><h3>Commendation, Economics</h3><span class="org" style="color:var(--teal)">John Locke Institute Essay Prize</span><p class="aw-note">Find my essay in the <a href="research.html">Research tab</a>.</p><a class="aw-link" href="docs/jli-commendation-certificate.pdf" data-doc="John Locke Institute: Commendation">View certificate →</a></div>
-            <div class="aw rv d1"><span class="yr">Apr 2026</span><div class="md" style="background:var(--terra)">★</div><h3>Outstanding New Service Club Award</h3><span class="org" style="color:var(--terra)">SAS Eagle Service Council</span><p>Recognized for leadership of Project Wish; led all club meetings, planned first ever social media fundraiser; directed service opportunities for 30+ members.</p></div>
-            <div class="aw rv"><span class="yr">2025–26</span><div class="md" style="background:var(--green)">3rd</div><h3>3rd Place, Company of the Year</h3><span class="org" style="color:var(--green)">Junior Achievement Singapore</span><p>Led EcoBean to national 3rd place finish; evaluated on financial performance, investor interview, trade fair execution, and final report. School's first top-3 finish in six years.</p></div>
-            <div class="aw rv d1"><span class="yr">2023–26</span><div class="md" style="background:var(--green2)">A</div><h3>Scholars List</h3><span class="org" style="color:var(--green)">Singapore American School</span><p>Met the GPA bar and showed strong command across all classes in every semester of high school so far.</p></div>
-            <div class="aw rv"><span class="yr">2023–26</span><div class="md" style="background:var(--coffee2)">♪</div><h3>Piano: Distinction &amp; Merit</h3><span class="org" style="color:var(--coffee2)">ABRSM</span><p>Distinction in Grades 1 and 2 and Merit in Grade 3, from years of weekly lessons.</p><div class="aw-links"><span>Certificates:</span><a class="aw-link" href="docs/abrsm-piano-grade-1.pdf" data-doc="ABRSM Piano Grade 1: Distinction">Grade 1</a><a class="aw-link" href="docs/abrsm-piano-grade-2.pdf" data-doc="ABRSM Piano Grade 2: Distinction">Grade 2</a><a class="aw-link" href="docs/abrsm-piano-grade-3.pdf" data-doc="ABRSM Piano Grade 3: Merit">Grade 3</a></div></div>
-            <div class="aw rv d1"><span class="yr">2025</span><div class="md" style="background:var(--sun)">SMU</div><h3>"Best Game" Award</h3><span class="org" style="color:#7d5a12">SMU Young Leaders Program</span><p>Our team built a game to teach incoming SMU students about campus and Singapore life.</p></div>
-            <div class="aw rv"><span class="yr">2025</span><div class="md" style="background:var(--teal)">AI</div><h3>Best Presentation Award</h3><span class="org" style="color:var(--teal)">Inspirit AI</span><p>For a group object-detection program designed to assist vehicles on the road.</p><a class="aw-link" href="docs/inspirit-best-presentation.pdf" data-doc="Inspirit AI: Best Presentation">View certificate →</a></div>
-            <div class="aw rv d1"><span class="yr">2024</span><div class="md" style="background:var(--coffee)">5th</div><h3>5th Place, globally</h3><span class="org" style="color:var(--coffee2)">Global Financial Literacy Olympiad</span><p>International competition with analytical and case-based evaluation.</p><a class="aw-link" href="docs/finlit-olympiad-certificate.pdf" data-doc="Financial Literacy Olympiad Certificate">View certificate →</a></div>
+            <div class="aw rv"><span class="yr">Oct 2026</span><h3>Commendation, Economics</h3><span class="org">John Locke Institute Essay Prize</span><p class="aw-note">Find my essay in the <a href="research.html">Research tab</a>.</p><a class="aw-link" href="docs/jli-commendation-certificate.pdf" data-doc="John Locke Institute: Commendation">View certificate →</a></div>
+            <div class="aw rv d1"><span class="yr">Apr 2026</span><h3>Outstanding New Service Club Award</h3><span class="org">SAS Eagle Service Council</span><p>Recognized for leadership of Project Wish; led all club meetings, planned first ever social media fundraiser; directed service opportunities for 30+ members.</p></div>
+            <div class="aw rv"><span class="yr">2025–26</span><h3>3rd Place, Company of the Year</h3><span class="org">Junior Achievement Singapore</span><p>Led EcoBean to national 3rd place finish; evaluated on financial performance, investor interview, trade fair execution, and final report. School's first top-3 finish in six years.</p></div>
+            <div class="aw rv d1"><span class="yr">2023–26</span><h3>Scholars List</h3><span class="org">Singapore American School</span><p>Met the GPA bar and showed strong command across all classes in every semester of high school so far.</p></div>
+            <div class="aw rv"><span class="yr">2023–26</span><h3>Piano: Distinction &amp; Merit</h3><span class="org">ABRSM</span><p>Distinction in Grades 1 and 2 and Merit in Grade 3, from years of weekly lessons.</p><div class="aw-links"><span>Certificates:</span><a class="aw-link" href="docs/abrsm-piano-grade-1.pdf" data-doc="ABRSM Piano Grade 1: Distinction">Grade 1</a><a class="aw-link" href="docs/abrsm-piano-grade-2.pdf" data-doc="ABRSM Piano Grade 2: Distinction">Grade 2</a><a class="aw-link" href="docs/abrsm-piano-grade-3.pdf" data-doc="ABRSM Piano Grade 3: Merit">Grade 3</a></div></div>
+            <div class="aw rv d1"><span class="yr">2025</span><h3>"Best Game" Award</h3><span class="org">SMU Young Leaders Program</span><p>Our team built a game to teach incoming SMU students about campus and Singapore life.</p></div>
+            <div class="aw rv"><span class="yr">2025</span><h3>Best Presentation Award</h3><span class="org">Inspirit AI</span><p>For a group object-detection program designed to assist vehicles on the road.</p><a class="aw-link" href="docs/inspirit-best-presentation.pdf" data-doc="Inspirit AI: Best Presentation">View certificate →</a></div>
+            <div class="aw rv d1"><span class="yr">2024</span><h3>5th Place, globally</h3><span class="org">Global Financial Literacy Olympiad</span><p>International competition with analytical and case-based evaluation.</p><a class="aw-link" href="docs/finlit-olympiad-certificate.pdf" data-doc="Financial Literacy Olympiad Certificate">View certificate →</a></div>
           </div>
         </div>
       </div>
 
       <div class="r-sec" id="leadership">
-        <span class="kick rv" style="color:var(--green)">Leadership &amp; Entrepreneurship</span>
+        <span class="kick rv">Leadership &amp; Entrepreneurship</span>
         <div class="timeline rv d1">
-          <div class="tl" style="--c:var(--green)">
+          <div class="tl">
             <small>Sep 2025 – Sep 2026</small>
             <b>EcoBean — Co-founder &amp; CEO</b>
             <ul>
@@ -79,7 +89,7 @@
               <li>Ran climate and entrepreneurship workshops for a Girl Scouts troop and an elementary school.</li>
             </ul>
           </div>
-          <div class="tl" style="--c:var(--terra)">
+          <div class="tl">
             <small>Aug 2025 – Present</small>
             <b>Project Wish — Co-founder &amp; President</b>
             <ul>
@@ -88,7 +98,7 @@
               <li>Run fundraisers, partnerships, and member service opportunities; planned the school's first social media fundraiser.</li>
             </ul>
           </div>
-          <div class="tl" style="--c:var(--coffee2)">
+          <div class="tl">
             <small>Sep 2026 – Present</small>
             <b>LaunchLab — Co-founder</b>
             <ul>
@@ -97,7 +107,7 @@
               <li>Expanding to new schools and audiences, adding workflow automation and AI bias research to future presentations.</li>
             </ul>
           </div>
-          <div class="tl" style="--c:var(--sun)">
+          <div class="tl">
             <small>Apr 2026 – Present</small>
             <b>Entrepreneurship Club — Officer</b>
             <ul>
@@ -106,7 +116,7 @@
               <li>Introducing the Conrad Challenge and Diamond Challenge as new competition pathways.</li>
             </ul>
           </div>
-          <div class="tl" style="--c:var(--green2)">
+          <div class="tl">
             <small>Jun 2023 – Present</small>
             <b>Cricket Coaching Service — Founder</b>
             <ul>
@@ -115,7 +125,7 @@
               <li>Managed client communications and scheduling logistics.</li>
             </ul>
           </div>
-          <div class="tl" style="--c:var(--coffee)">
+          <div class="tl">
             <small>Jun – Aug 2022</small>
             <b>Delivery Service — Founder</b>
             <ul>
@@ -128,9 +138,9 @@
       </div>
 
       <div class="r-sec" id="experience">
-        <span class="kick rv" style="color:var(--teal)">Professional Experience</span>
+        <span class="kick rv">Professional Experience</span>
         <div class="timeline rv d1">
-          <div class="tl" style="--c:var(--teal)">
+          <div class="tl">
             <small>Jun 2026 · 4 weeks</small>
             <b>Ambulance Wish Singapore — Summer Intern</b>
             <ul>
@@ -141,7 +151,7 @@
               <li>Fundraising: researched 18+ cake sponsors and ran the schedule and labels for Cakes for a Cause 2026; secured a live band and listed 39 potential sponsors for the AWS Charity Golf Event; handled Sound Bath for Wishes registrations.</li>
             </ul>
           </div>
-          <div class="tl" style="--c:var(--green)">
+          <div class="tl">
             <small>Jul 2025</small>
             <b>Green Tiger Mobility — Job shadow</b>
             <ul>
@@ -153,9 +163,9 @@
       </div>
 
       <div class="r-sec" id="programs">
-        <span class="kick rv" style="color:#7d5a12">Summer Programs &amp; Academic Enrichment</span>
+        <span class="kick rv">Summer Programs &amp; Academic Enrichment</span>
         <div class="timeline rv d1">
-          <div class="tl" style="--c:var(--teal)">
+          <div class="tl">
             <small>2025 · 2 weeks (25 hours)</small>
             <b>Introduction to AI — Inspirit AI</b>
             <ul>
@@ -164,7 +174,7 @@
               <li>Helped build an object detection program to assist vehicles on the road; won the Best Presentation Award.</li>
             </ul>
           </div>
-          <div class="tl" style="--c:var(--terra)">
+          <div class="tl">
             <small>2025 · 1 week</small>
             <b>NextGen Program — IIT Bombay</b>
             <ul>
@@ -173,7 +183,7 @@
               <li>Emphasis on global warming and engineering for sustainable living, plus research talks such as AI-driven work in the biology department.</li>
             </ul>
           </div>
-          <div class="tl" style="--c:var(--green)">
+          <div class="tl">
             <small>2025 · 1 week</small>
             <b>Young Leaders Summer Program — Singapore Management University</b>
             <ul>
@@ -181,7 +191,7 @@
               <li>Won the "Best Game" award for a game teaching incoming SMU students about campus and Singapore life.</li>
             </ul>
           </div>
-          <div class="tl" style="--c:var(--sun)">
+          <div class="tl">
             <small>HBS &amp; IIT Bombay curriculum</small>
             <b>BrightChamps Financial Literacy Training</b>
             <ul>
@@ -194,7 +204,7 @@
       <div class="r-sec" id="service">
         <span class="kick rv">Service &amp; Community Impact</span>
         <div class="timeline rv d1">
-          <div class="tl" style="--c:var(--teal)">
+          <div class="tl">
             <small>Aug 2023 – Present</small>
             <b>Code For All — Co-president</b>
             <ul>
@@ -204,7 +214,7 @@
               <li>Overseeing expansion beyond pure coding through the Stick 'Em initiative, combining robotics and coding for hands-on lessons with younger students.</li>
             </ul>
           </div>
-          <div class="tl" style="--c:var(--green)">
+          <div class="tl">
             <small>Jan 2026 – Present</small>
             <b>Science Centre Singapore — Volunteer</b>
             <ul>
@@ -214,7 +224,7 @@
               <li>Shared the Science Centre's sustainability initiatives at Yue Hua Green Day.</li>
             </ul>
           </div>
-          <div class="tl" style="--c:var(--sun)">
+          <div class="tl">
             <small>2025 – Present</small>
             <b>National Honor Society — Service</b>
             <ul>
@@ -225,10 +235,10 @@
       </div>
 
       <div class="r-sec" id="skills">
-        <span class="kick rv" style="color:var(--teal)">Skills &amp; Languages</span>
+        <span class="kick rv">Skills &amp; Languages</span>
         <div class="skills rv d1">
-          <div style="--c:var(--green)"><h4>Technical Skills</h4><div class="pills"><span class="pill g">Team leadership</span><span class="pill g">Communication</span><span class="pill g">Public speaking</span><span class="pill g">Problem solving</span><span class="pill g">Time management</span><span class="pill g">Teamwork</span><span class="pill g">Project management</span><span class="pill g">Community outreach</span><span class="pill g">Teaching</span><span class="pill g">AI tools &amp; Power Automate</span></div></div>
-          <div style="--c:var(--teal)"><h4>Languages</h4><div class="pills"><span class="pill c">English · native</span><span class="pill c">Mandarin · limited working</span><span class="pill c">Hindi · elementary</span></div></div>
+          <div><h4>Technical Skills</h4><div class="pills"><span class="pill g">Team leadership</span><span class="pill g">Communication</span><span class="pill g">Public speaking</span><span class="pill g">Problem solving</span><span class="pill g">Time management</span><span class="pill g">Teamwork</span><span class="pill g">Project management</span><span class="pill g">Community outreach</span><span class="pill g">Teaching</span><span class="pill g">AI tools &amp; Power Automate</span></div></div>
+          <div><h4>Languages</h4><div class="pills"><span class="pill c">English · native</span><span class="pill c">Mandarin · limited working</span><span class="pill c">Hindi · elementary</span></div></div>
         </div>
       </div>
 
@@ -238,7 +248,7 @@
 </main>
 
 <footer class="foot">
-  <div class="wrap"><span>© <span data-year>2026</span> Rishabh Modi · Singapore</span><a href="#">Back to the top ↑</a></div>
+  <div class="wrap"><span>© <span data-year>2026</span> Rishabh Modi · Singapore</span><nav><a href="index.html">Home</a><a href="work.html">Work</a><a href="research.html">Research</a></nav></div>
 </footer>
 
 <script src="script.js"></script>
