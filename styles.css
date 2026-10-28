@@ -152,6 +152,7 @@ strong { font-weight: 600; }
 .pair div { padding: 14px 16px; border: 1.5px solid var(--ink); border-radius: 4px; background: var(--card); }
 .pair b { display: block; font-family: var(--hd); font-size: 19px; }
 .pair span { font-size: 14.5px; color: var(--mut); }
+.pair .motto { display: block; margin-top: 6px; font-family: var(--hand); font-style: normal; font-size: 21px; line-height: 1.15; color: var(--pen); }
 
 .photos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 34px 22px; margin-top: 40px; align-items: start; }
 .photos .spec:nth-child(3n+1) { --r: -1.5deg; } .photos .spec:nth-child(3n+2) { --r: 1.3deg; } .photos .spec:nth-child(3n) { --r: -.6deg; }
