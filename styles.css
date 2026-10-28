@@ -191,6 +191,11 @@ strong { font-weight: 600; }
 .steps li { padding: 18px 18px 0 0; font-size: 15px; color: var(--mut); }
 .steps li + li { padding-left: 18px; border-left: 1px dashed var(--rule2); }
 .steps b { display: block; color: var(--ink); font-family: var(--hd); font-size: 19px; margin: 4px 0; }
+.band-grid .steps { grid-template-columns: 1fr; margin-top: 26px; }
+.band-grid .steps li { padding: 14px 0 0 18px; border-left: 2px dashed var(--rule2); }
+.band-grid .steps li + li { border-left: 2px dashed var(--rule2); padding-left: 18px; }
+.band-grid .chem { grid-template-columns: 1fr; border-top: 0; display: grid; gap: 12px; }
+.band-grid .chem li, .band-grid .chem li + li { padding: 16px 18px; border: 1.5px dashed var(--rule2); border-radius: 6px; }
 
 /* contact */
 .contact { padding: clamp(56px, 8vw, 96px) 0; }
