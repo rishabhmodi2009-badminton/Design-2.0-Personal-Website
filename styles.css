@@ -60,6 +60,7 @@ strong { font-weight: 600; }
 .intro h1 { font-size: clamp(50px, 8vw, 110px); line-height: .95; letter-spacing: -.045em; }
 .intro .tag { margin-top: 20px; font-size: clamp(21px, 2.1vw, 26px); line-height: 1.4; }
 .intro .lede { margin-top: 18px; max-width: 58ch; color: var(--mut); font-size: clamp(17px, 1.4vw, 19px); }
+.intro h1 + .lede { margin-top: 32px; }
 .intro .links { display: flex; flex-wrap: wrap; gap: 12px 26px; margin-top: 26px; }
 .circled { position: relative; white-space: nowrap; }
 .circled svg { position: absolute; left: -10px; top: -8px; width: calc(100% + 20px); height: calc(100% + 16px); overflow: visible; pointer-events: none; }
