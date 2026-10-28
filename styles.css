@@ -277,7 +277,6 @@ strong { font-weight: 600; }
 .text-hint svg { position: absolute; left: 6px; top: -38px; width: 60px; height: 56px; overflow: visible; }
 .text-hint path { fill: none; stroke: var(--pen); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .tree-stage[data-time="dusk"] { background: linear-gradient(#F4C29A 0%, #F2D8BE 55%, #E2C8A8 100%); }
-.tree-stage[data-time="night"] { background: linear-gradient(#0F1530 0%, #1D2747 60%, #273352 100%); }
 .tree-stage { transition: background .8s; }
 .court-ctrl { position: absolute; z-index: 3; left: 14px; bottom: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .court-ctrl .pause { padding: 9px 18px; border: 0; border-radius: 999px; background: rgba(255,253,248,.93); color: var(--pen); font: 500 15px var(--bd); cursor: pointer; box-shadow: 0 6px 16px -10px rgba(31,27,22,.6); }
