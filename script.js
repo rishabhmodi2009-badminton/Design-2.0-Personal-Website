@@ -205,7 +205,7 @@ document.querySelectorAll('[data-strip]').forEach(function (b) {
       }
       sec.querySelectorAll('.tl').forEach(function (el) {
         var parts = txt(el.querySelector('b')).split(' — ');
-        items.push({ title: parts[0], org: parts[1] || '', date: txt(el.querySelector('small')), points: Array.prototype.map.call(el.querySelectorAll('li'), txt) });
+        items.push({ title: parts[0], label: el.getAttribute('data-label'), org: parts[1] || '', date: txt(el.querySelector('small')), points: Array.prototype.map.call(el.querySelectorAll('li'), txt) });
       });
       sec.querySelectorAll('.aw').forEach(function (el) {
         items.push({ title: txt(el.querySelector('h3')), org: txt(el.querySelector('.org')), date: txt(el.querySelector('.yr')), text: Array.prototype.map.call(el.querySelectorAll('p'), txt).join(' ') });
@@ -442,7 +442,7 @@ document.querySelectorAll('[data-strip]').forEach(function (b) {
       card.appendChild(el('h3', '', st.sec.name));
       var list = el('div', 'tree-list');
       st.sec.items.forEach(function (item) {
-        var b = el('button'); b.type = 'button'; b.appendChild(document.createTextNode(item.title)); b.appendChild(el('small', '', item.date));
+        var b = el('button'); b.type = 'button'; b.appendChild(document.createTextNode(item.label || item.title)); b.appendChild(el('small', '', item.date));
         b.addEventListener('click', function () { showItem(st, item); });
         list.appendChild(b);
       });
