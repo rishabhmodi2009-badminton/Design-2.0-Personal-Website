@@ -228,7 +228,7 @@ document.querySelectorAll('[data-strip]').forEach(function (b) {
 
     var scene = new T.Scene(), camera = new T.PerspectiveCamera(34, 1, .5, 220);
     scene.fog = new T.Fog(0xeef0e6, 70, 140);
-    scene.add(new T.HemisphereLight(0xffffff, 0x6a8a4c, .6));
+    var hemi = new T.HemisphereLight(0xffffff, 0x6a8a4c, .6); scene.add(hemi);
     var sun = new T.DirectionalLight(0xfff3dc, .85);
     sun.position.set(-18, 30, 14); sun.castShadow = true;
     sun.shadow.mapSize.set(small ? 1024 : 2048, small ? 1024 : 2048);
@@ -411,6 +411,58 @@ document.querySelectorAll('[data-strip]').forEach(function (b) {
       movers.push((function (o, ph) { return function (time) { o.rotation.y = time * .4 + ph; o.position.y = .95 + Math.sin(time * 1.3 + ph) * .03; }; })(sp2, gx * 3 + gz));
     }
 
+    /* floodlights around the court, lit at dusk and night */
+    var floods = [];
+    [[-8.6, -5.2], [8.6, -5.2], [-8.6, 5.2], [8.6, 5.2]].forEach(function (c) {
+      cy(.09, .12, 6.2, 0x8c939a, c[0], 0, c[1], scene, 8);
+      var head = bx(.9, .35, .5, new T.MeshStandardMaterial({ color: 0xe9eef2, emissive: 0xfff1c9, emissiveIntensity: 0 }), c[0] * .96, 6.1, c[1] * .96);
+      var lamp = new T.PointLight(0xfff1c9, 0, 34, 1.6); lamp.position.set(c[0] * .9, 6, c[1] * .9); scene.add(lamp);
+      floods.push({ head: head, lamp: lamp });
+    });
+
+    /* time of day: Auto follows the time in Singapore */
+    var PRESETS = {
+      day:   { sky: 0xffffff, ground: 0x6a8a4c, hemi: .6,  sun: 0xfff3dc, sunI: .85, sunPos: [-18, 30, 14], fog: 0xeef0e6, flood: 0 },
+      dusk:  { sky: 0xffd3ad, ground: 0x5a4a62, hemi: .5,  sun: 0xff9a5a, sunI: .75, sunPos: [-32, 11, 8],  fog: 0xf0c6a6, flood: .55 },
+      night: { sky: 0x5d6fa8, ground: 0x18202e, hemi: .32, sun: 0x9fb4ff, sunI: .28, sunPos: [20, 26, -12], fog: 0x1b2236, flood: 1.25 }
+    };
+    var tod = 'auto', look = null, cur = null;
+    function sgPhase() {
+      var hr = +new Intl.DateTimeFormat('en-GB', { hour: 'numeric', hour12: false, timeZone: 'Asia/Singapore' }).format(new Date());
+      return hr >= 7 && hr < 17 ? 'day' : (hr >= 17 && hr < 19) || hr === 6 ? 'dusk' : 'night';
+    }
+    function phase() { return tod === 'auto' ? sgPhase() : tod; }
+    function setLook(name) {
+      look = PRESETS[name]; stage.setAttribute('data-time', name);
+      if (!cur) cur = { sky: new T.Color(look.sky), ground: new T.Color(look.ground), hemi: look.hemi, sun: new T.Color(look.sun), sunI: look.sunI, sunPos: new T.Vector3().fromArray(look.sunPos), fog: new T.Color(look.fog), flood: look.flood };
+    }
+    function blend(k) {
+      cur.sky.lerp(new T.Color(look.sky), k); cur.ground.lerp(new T.Color(look.ground), k); cur.sun.lerp(new T.Color(look.sun), k); cur.fog.lerp(new T.Color(look.fog), k);
+      cur.hemi += (look.hemi - cur.hemi) * k; cur.sunI += (look.sunI - cur.sunI) * k; cur.flood += (look.flood - cur.flood) * k;
+      cur.sunPos.lerp(new T.Vector3().fromArray(look.sunPos), k);
+      hemi.color.copy(cur.sky); hemi.groundColor.copy(cur.ground); hemi.intensity = cur.hemi;
+      sun.color.copy(cur.sun); sun.intensity = cur.sunI; sun.position.copy(cur.sunPos); scene.fog.color.copy(cur.fog);
+      floods.forEach(function (f) { f.lamp.intensity = cur.flood; f.head.material.emissiveIntensity = cur.flood * 1.4; });
+    }
+    setLook(phase()); blend(1);
+    setInterval(function () { if (tod === 'auto') setLook(sgPhase()); }, 60000);
+
+    var paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ctrl = el('div', 'court-ctrl');
+    var pauseBtn = el('button', 'pause', paused ? 'Play motion' : 'Pause motion'); pauseBtn.type = 'button'; pauseBtn.setAttribute('aria-pressed', String(paused));
+    pauseBtn.addEventListener('click', function () { paused = !paused; pauseBtn.textContent = paused ? 'Play motion' : 'Pause motion'; pauseBtn.setAttribute('aria-pressed', String(paused)); });
+    var times = el('div', 'times'); times.setAttribute('role', 'group'); times.setAttribute('aria-label', 'Time of day');
+    ['auto', 'day', 'dusk', 'night'].forEach(function (name) {
+      var b = el('button', '', name.charAt(0).toUpperCase() + name.slice(1)); b.type = 'button'; b.setAttribute('aria-pressed', String(name === tod));
+      if (name === 'auto') b.title = 'Follows the time in Singapore';
+      b.addEventListener('click', function () {
+        tod = name; setLook(phase());
+        times.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      });
+      times.appendChild(b);
+    });
+    ctrl.appendChild(pauseBtn); ctrl.appendChild(times); stage.appendChild(ctrl);
+
     /* camera rig */
     var target = new T.Vector3(0, 1, 2.5), az = Math.PI / 2, elev = .68, dist = small ? 62 : 47;
     var goal = null, home = { t: target.clone(), az: az, elev: elev, dist: dist };
@@ -503,17 +555,19 @@ document.querySelectorAll('[data-strip]').forEach(function (b) {
     if ('IntersectionObserver' in window) new IntersectionObserver(function (l) { visible = l[0].isIntersecting; }).observe(stage);
     resize();
 
-    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches, clock = new T.Clock(), v = new T.Vector3();
+    var clock = new T.Clock(), animT = 0, v = new T.Vector3();
     (function loop() {
       requestAnimationFrame(loop);
       if (box.hidden || !visible) return;
-      var time = clock.getElapsedTime();
+      var dt = Math.min(clock.getDelta(), .1); if (!paused) animT += dt;
+      var time = animT;
+      blend(Math.min(1, dt * 2.5));
       if (goal) {
         var k = .07; target.lerp(goal.t, k); az += (goal.az - az) * k; elev += (goal.elev - elev) * k; dist += (goal.dist - dist) * k;
         if (Math.abs(goal.az - az) < .002 && Math.abs(goal.dist - dist) < .02) goal = null;
-      } else if (!dragging && !current && !still) az += .0007;
+      } else if (!dragging && !current && !paused) az += .0007;
       place();
-      if (!still) {
+      if (!paused) {
         var cycle = 1.7, u = (time % cycle) / cycle, leg = Math.floor(time / cycle) % 2, from = leg ? 4.2 : -4.2;
         var sx = from + (-2 * from) * u, sy = 1.7 + Math.sin(Math.PI * u) * 3.2, sz = (leg ? -.6 : .7) + ((leg ? .7 : -.6) - (leg ? -.6 : .7)) * u;
         shuttle.position.set(sx, sy, sz);
