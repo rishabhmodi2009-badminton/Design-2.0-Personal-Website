@@ -9,6 +9,21 @@ document.querySelectorAll('[data-year]').forEach(function (el) {
     list.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
   }, { rootMargin: '0px 0px -6% 0px', threshold: .06 });
   els.forEach(function (el) { io.observe(el); });
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var counters = new IntersectionObserver(function (list) {
+    list.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      counters.unobserve(en.target);
+      var el = en.target, to = +el.getAttribute('data-count'), t0 = performance.now();
+      (function tick(t) {
+        var k = Math.min(1, (t - t0) / 1400);
+        el.textContent = (el.getAttribute('data-prefix') || '') + Math.round(to * (1 - Math.pow(1 - k, 3))).toLocaleString('en-US') + (el.getAttribute('data-suffix') || '');
+        if (k < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  }, { threshold: .4 });
+  document.querySelectorAll('[data-count]').forEach(function (el) { counters.observe(el); });
 })();
 
 /* LaunchLab filmstrip arrows */
