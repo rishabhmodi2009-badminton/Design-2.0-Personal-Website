@@ -176,6 +176,7 @@ document.querySelectorAll('[data-strip]').forEach(function (b) {
   function setMode(m) {
     buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-mode') === m)); });
     box.hidden = m !== 'tree'; text.hidden = m === 'tree';
+    var hint = document.getElementById('text-hint'); if (hint) hint.hidden = m !== 'tree';
     try { localStorage.setItem('resume-mode', m); } catch (e) {}
     if (m === 'tree' && !started) { started = true; load(); }
     if (api) api.resize();

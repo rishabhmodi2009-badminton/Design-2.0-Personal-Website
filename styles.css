@@ -251,7 +251,10 @@ strong { font-weight: 600; }
 .court-nav button { flex: none; padding: 6px 12px; border: 0; border-radius: 999px; background: transparent; font: 500 13.5px var(--bd); color: var(--mut); cursor: pointer; white-space: nowrap; }
 .court-nav button b { font-family: var(--hand); font-size: 18px; color: var(--pen); margin-right: 4px; }
 .court-nav button:hover, .court-nav button[aria-pressed="true"] { background: var(--paper2); color: var(--ink); }
-.tree-hint { position: absolute; z-index: 3; left: 18px; bottom: 14px; font-family: var(--hand); font-size: 22px; color: var(--pen); }
+.text-hint { position: relative; margin: -10px 0 16px; padding-left: 66px; font-family: var(--hand); font-size: 24px; line-height: 1.2; color: var(--pen); }
+.text-hint[hidden] { display: none; }
+.text-hint svg { position: absolute; left: 6px; top: -38px; width: 60px; height: 56px; overflow: visible; }
+.text-hint path { fill: none; stroke: var(--pen); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .tree-panel { position: absolute; z-index: 4; right: 14px; top: 64px; bottom: 14px; width: min(340px, calc(100% - 28px)); padding: 20px 20px 22px; background: rgba(255,253,248,.97); border: 1.5px solid var(--ink); border-radius: 6px; overflow-y: auto; box-shadow: 0 18px 40px -24px rgba(31,27,22,.6); }
 .tree-panel[hidden] { display: none; }
 .tree-close { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--rule2); background: var(--card); font-size: 18px; line-height: 1; cursor: pointer; color: var(--ink); }
@@ -331,7 +334,6 @@ strong { font-weight: 600; }
   .tree-stage { height: 78vh; min-height: 460px; }
   .tree-panel { top: auto; left: 10px; right: 10px; bottom: 10px; width: auto; max-height: 52%; }
   .court-nav { top: 10px; }
-  .tree-hint { display: none; }
   .viewer, .gallery { padding: 0; }
   .viewer-box, .gallery-box { height: 100%; width: 100%; border: 0; border-radius: 0; }
 }
