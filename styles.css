@@ -77,12 +77,12 @@ strong { font-weight: 600; }
 .spec.rv.in { transform: rotate(var(--r, 0deg)); }
 .spec.rv.in:hover { transform: rotate(0deg) scale(1.015); }
 
-.pile { position: relative; height: clamp(380px, 40vw, 520px); }
+.pile { position: relative; width: 100%; aspect-ratio: 9 / 10; }
 .pile .spec { position: absolute; }
-.pile .p1 { width: 70%; right: 0; top: 0; --r: 3deg; }
-.pile .p2 { width: 56%; left: 0; top: 46%; --r: -5deg; z-index: 2; }
-.pile .p3 { width: 44%; right: 2%; bottom: -2%; --r: 6deg; z-index: 3; }
-.pile .note { position: absolute; left: 0; top: 6%; font-size: 23px; transform: rotate(-8deg); z-index: 4; line-height: 1.1; max-width: 150px; }
+.pile .p1 { width: 46%; left: 0; top: 3%; --r: -3deg; }
+.pile .p2 { width: 56%; right: 0; top: 0; --r: 3deg; z-index: 2; }
+.pile .p3 { width: 52%; right: 3%; bottom: 0; --r: -2deg; z-index: 3; }
+.pile .note { position: absolute; left: 3%; bottom: 9%; font-size: clamp(16px, 4.2vw, 23px); transform: rotate(-6deg); z-index: 4; line-height: 1.1; max-width: 38%; }
 
 /* ledger of numbers */
 .ledger { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1.5px solid var(--ink); border-bottom: 1px dashed var(--rule2); }
@@ -295,7 +295,7 @@ strong { font-weight: 600; }
 
 @media (max-width: 960px) {
   .intro .wrap, .row, .band-grid, .story { grid-template-columns: minmax(0, 1fr); }
-  .pile { height: clamp(360px, 80vw, 520px); max-width: 560px; }
+  .pile { max-width: 560px; }
   .row:nth-child(even) .row-photo { order: 0; }
   .story .meta { position: static; display: flex; gap: 18px; align-items: center; }
   .story .meta img.logo { margin: 0; width: 60px; height: 60px; }
@@ -335,3 +335,4 @@ strong { font-weight: 600; }
   .viewer, .gallery { padding: 0; }
   .viewer-box, .gallery-box { height: 100%; width: 100%; border: 0; border-radius: 0; }
 }
+@media (max-width: 480px) { .pile .note { display: none; } }
